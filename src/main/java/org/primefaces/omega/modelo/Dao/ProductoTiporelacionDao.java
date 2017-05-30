@@ -13,6 +13,7 @@ import org.primefaces.omega.modelo.ProductoTiporelacion;
  * @author fabricio
  */
 public interface ProductoTiporelacionDao {
+    public void buscar_dos();
 
     public void InsertarProductoTiporelacion(ProductoTiporelacion ObjProductoTiporelaciones);
 
@@ -23,4 +24,5 @@ public interface ProductoTiporelacionDao {
     public ArrayList BuscarProductoTiporelacion(String Consulta);
 
     public ArrayList LoadTablaProductoTiporelaciones();
+    //comentario
 }
