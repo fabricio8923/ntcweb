@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="LogisticaUsodireccionEditDlg" widgetVar="LogisticaUsodireccionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditLogisticaUsodireccionTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaUsodireccionEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{logisticaUsodireccionController.selected != null}">
+
+        
+                        <h:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_usoDireccionID}" for="usoDireccionID" />
+                        <h:outputText id="usoDireccionID" value="#{logisticaUsodireccionController.selected.usoDireccionID}" />
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{logisticaUsodireccionController.selected.nombre}" title="#{myBundle.EditLogisticaUsodireccionTitle_nombre}" required="true" requiredMessage="#{myBundle.EditLogisticaUsodireccionRequiredMessage_nombre}" size="100" maxlength="100"/>
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{logisticaUsodireccionController.selected.descripcion}" title="#{myBundle.EditLogisticaUsodireccionTitle_descripcion}" size="100" maxlength="100"/>
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_abreviacion}" for="abreviacion" />
+                        <p:inputText id="abreviacion" value="#{logisticaUsodireccionController.selected.abreviacion}" title="#{myBundle.EditLogisticaUsodireccionTitle_abreviacion}" size="200" maxlength="200"/>
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaUsodireccionController.selected.fechaCreacion}" title="#{myBundle.EditLogisticaUsodireccionTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditLogisticaUsodireccionRequiredMessage_fechaCreacion}" showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaUsodireccionController.selected.fechaModificacion}" title="#{myBundle.EditLogisticaUsodireccionTitle_fechaModificacion}"  showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.EditLogisticaUsodireccionLabel_estadoRegistro}" for="estadoRegistro" />
+                        <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaUsodireccionController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaUsodireccionRequiredMessage_estadoRegistro}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaUsodireccionController.save}" value="#{myBundle.Save}" update="display,:LogisticaUsodireccionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaUsodireccionEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaUsodireccionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

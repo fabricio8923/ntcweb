@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaDocumentoentidadViewDlg" widgetVar="PersonaDocumentoentidadViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPersonaDocumentoentidadTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaDocumentoentidadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personaDocumentoentidadController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_documentoEntidadID}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.documentoEntidadID}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_documentoEntidadID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_nombre}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.nombre}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_descripcion}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.descripcion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_observaion}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.observaion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_observaion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_ruta}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.ruta}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_ruta}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_extension}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.extension}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_extension}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaDocumentoentidadController.selected.estadoRegistro}" title="#{myBundle.EditPersonaDocumentoentidadTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_entidadNegocioID}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.entidadNegocioID.descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_tipoDocumentoID}"/>
+                        <h:outputText value="#{personaDocumentoentidadController.selected.tipoDocumentoID.descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PersonaDocumentoentidadViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

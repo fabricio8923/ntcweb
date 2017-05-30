@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.LogisticaProvincia" table="logistica_provincia" catalog="ntc" optimistic-lock="version">
+        <id name="provinciaId" type="java.lang.Integer">
+            <column name="ProvinciaID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="logisticaDepartamento" class="org.primefaces.omega.modelo.LogisticaDepartamento" fetch="select">
+            <column name="DepartamentoID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="100" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="Codigo" length="10" not-null="true" />
+        </property>
+        <property name="codigoPostal" type="string">
+            <column name="CodigoPostal" length="8" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="logisticaLocacions" table="logistica_locacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProvinciaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.LogisticaLocacion" />
+        </set>
+        <set name="logisticaDistritos" table="logistica_distrito" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProvinciaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.LogisticaDistrito" />
+        </set>
+    </class>
+</hibernate-mapping>

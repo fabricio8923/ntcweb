@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaPersonaViewDlg" widgetVar="PersonaPersonaViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPersonaPersonaTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaPersonaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personaPersonaController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_entidadNegocioID}"/>
+                        <h:outputText value="#{personaPersonaController.selected.entidadNegocioID}" title="#{myBundle.ViewPersonaPersonaTitle_entidadNegocioID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_nombre}"/>
+                        <h:outputText value="#{personaPersonaController.selected.nombre}" title="#{myBundle.ViewPersonaPersonaTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_primerApellido}"/>
+                        <h:outputText value="#{personaPersonaController.selected.primerApellido}" title="#{myBundle.ViewPersonaPersonaTitle_primerApellido}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_segundoApellido}"/>
+                        <h:outputText value="#{personaPersonaController.selected.segundoApellido}" title="#{myBundle.ViewPersonaPersonaTitle_segundoApellido}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_sufijo}"/>
+                        <h:outputText value="#{personaPersonaController.selected.sufijo}" title="#{myBundle.ViewPersonaPersonaTitle_sufijo}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_sexo}"/>
+                        <h:outputText value="#{personaPersonaController.selected.sexo}" title="#{myBundle.ViewPersonaPersonaTitle_sexo}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personaPersonaController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaPersonaTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personaPersonaController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaPersonaTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_usuarioModificacion}"/>
+                        <h:outputText value="#{personaPersonaController.selected.usuarioModificacion}" title="#{myBundle.ViewPersonaPersonaTitle_usuarioModificacion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaPersonaController.selected.estadoRegistro}" title="#{myBundle.EditPersonaPersonaTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_personaEntidadnegocio}"/>
+                        <h:outputText value="#{personaPersonaController.selected.personaEntidadnegocio.descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaPersonaLabel_estadoCivilID}"/>
+                        <h:outputText value="#{personaPersonaController.selected.estadoCivilID.descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PersonaPersonaViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

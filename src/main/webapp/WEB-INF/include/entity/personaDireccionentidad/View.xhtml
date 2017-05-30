@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaDireccionentidadViewDlg" widgetVar="PersonaDireccionentidadViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPersonaDireccionentidadTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaDireccionentidadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personaDireccionentidadController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_direccionEntidadID}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.direccionEntidadID}" title="#{myBundle.ViewPersonaDireccionentidadTitle_direccionEntidadID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_nombre}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.nombre}" title="#{myBundle.ViewPersonaDireccionentidadTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_descripcion}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.descripcion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_latitud}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.latitud}" title="#{myBundle.ViewPersonaDireccionentidadTitle_latitud}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_longitud}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.longitud}" title="#{myBundle.ViewPersonaDireccionentidadTitle_longitud}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaDireccionentidadController.selected.estadoRegistro}" title="#{myBundle.EditPersonaDireccionentidadTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaDireccionentidadRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_distritoID}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.distritoID.distritoID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_entidadNegocioID}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.entidadNegocioID.descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_tipoDireccionID}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.tipoDireccionID.descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_usoDireccionID}"/>
+                        <h:outputText value="#{personaDireccionentidadController.selected.usoDireccionID.descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PersonaDireccionentidadViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

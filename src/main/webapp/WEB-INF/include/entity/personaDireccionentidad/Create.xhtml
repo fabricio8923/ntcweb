@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaDireccionentidadCreateDlg" widgetVar="PersonaDireccionentidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreatePersonaDireccionentidadTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaDireccionentidadCreateForm">
+
+                <h:panelGroup id="display" rendered="#{personaDireccionentidadController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{personaDireccionentidadController.selected.nombre}" title="#{myBundle.CreatePersonaDireccionentidadTitle_nombre}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{personaDireccionentidadController.getComponentMessages('nombre', myBundle.CreatePersonaDireccionentidadHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{personaDireccionentidadController.selected.descripcion}" title="#{myBundle.CreatePersonaDireccionentidadTitle_descripcion}" size="200" maxlength="200"/>
+                            <p:tooltip for="descripcion" value="#{personaDireccionentidadController.getComponentMessages('descripcion', myBundle.CreatePersonaDireccionentidadHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_latitud}" for="latitud" />
+                        <h:panelGroup>
+                            <p:inputText id="latitud" value="#{personaDireccionentidadController.selected.latitud}" title="#{myBundle.CreatePersonaDireccionentidadTitle_latitud}"/>
+                            <p:tooltip for="latitud" value="#{personaDireccionentidadController.getComponentMessages('latitud', myBundle.CreatePersonaDireccionentidadHelpText_latitud)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_longitud}" for="longitud" />
+                        <h:panelGroup>
+                            <p:inputText id="longitud" value="#{personaDireccionentidadController.selected.longitud}" title="#{myBundle.CreatePersonaDireccionentidadTitle_longitud}"/>
+                            <p:tooltip for="longitud" value="#{personaDireccionentidadController.getComponentMessages('longitud', myBundle.CreatePersonaDireccionentidadHelpText_longitud)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaDireccionentidadController.selected.fechaCreacion}" title="#{myBundle.CreatePersonaDireccionentidadTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{personaDireccionentidadController.getComponentMessages('fechaCreacion', myBundle.CreatePersonaDireccionentidadHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaDireccionentidadController.selected.fechaModificacion}" title="#{myBundle.CreatePersonaDireccionentidadTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{personaDireccionentidadController.getComponentMessages('fechaModificacion', myBundle.CreatePersonaDireccionentidadHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaDireccionentidadController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{personaDireccionentidadController.getComponentMessages('estadoRegistro', myBundle.CreatePersonaDireccionentidadHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_distritoID}" for="distritoID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="distritoID" value="#{personaDireccionentidadController.selected.distritoID}"  converter="logisticaDistritoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{logisticaDistritoController.items}"
+                                               var="distritoIDItem"
+                                               itemValue="#{distritoIDItem}"
+                                               itemLabel="#{distritoIDItem.distritoID.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="distritoID" value="#{personaDireccionentidadController.getComponentMessages('distritoID', myBundle.CreatePersonaDireccionentidadHelpText_distritoID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_entidadNegocioID}" for="entidadNegocioID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="entidadNegocioID" value="#{personaDireccionentidadController.selected.entidadNegocioID}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_entidadNegocioID}" converter="personaEntidadnegocioConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{personaEntidadnegocioController.items}"
+                                               var="entidadNegocioIDItem"
+                                               itemValue="#{entidadNegocioIDItem}"
+                                               itemLabel="#{entidadNegocioIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="entidadNegocioID" value="#{personaDireccionentidadController.getComponentMessages('entidadNegocioID', myBundle.CreatePersonaDireccionentidadHelpText_entidadNegocioID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_tipoDireccionID}" for="tipoDireccionID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="tipoDireccionID" value="#{personaDireccionentidadController.selected.tipoDireccionID}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_tipoDireccionID}" converter="logisticaTipodireccionConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{logisticaTipodireccionController.items}"
+                                               var="tipoDireccionIDItem"
+                                               itemValue="#{tipoDireccionIDItem}"
+                                               itemLabel="#{tipoDireccionIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="tipoDireccionID" value="#{personaDireccionentidadController.getComponentMessages('tipoDireccionID', myBundle.CreatePersonaDireccionentidadHelpText_tipoDireccionID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaDireccionentidadLabel_usoDireccionID}" for="usoDireccionID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="usoDireccionID" value="#{personaDireccionentidadController.selected.usoDireccionID}" required="true" requiredMessage="#{myBundle.CreatePersonaDireccionentidadRequiredMessage_usoDireccionID}" converter="logisticaUsodireccionConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{logisticaUsodireccionController.items}"
+                                               var="usoDireccionIDItem"
+                                               itemValue="#{usoDireccionIDItem}"
+                                               itemLabel="#{usoDireccionIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="usoDireccionID" value="#{personaDireccionentidadController.getComponentMessages('usoDireccionID', myBundle.CreatePersonaDireccionentidadHelpText_usoDireccionID)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaDireccionentidadController.saveNew}" value="#{myBundle.Save}" update="display,:PersonaDireccionentidadListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PersonaDireccionentidadCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PersonaDireccionentidadCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

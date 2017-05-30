@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.OrganizacionOrdentrabajo" table="organizacion_ordentrabajo" catalog="ntc" optimistic-lock="version">
+        <id name="ordenTrabajoId" type="java.lang.Integer">
+            <column name="OrdenTrabajoID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalEstado" class="org.primefaces.omega.modelo.GeneralEstado" fetch="select">
+            <column name="EstadoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionOrganizacion" class="org.primefaces.omega.modelo.OrganizacionOrganizacion" fetch="select">
+            <column name="EntidadOrganizacionID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionTrabajador" class="org.primefaces.omega.modelo.OrganizacionTrabajador" fetch="select">
+            <column name="TrabajadorID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personaPersona" class="org.primefaces.omega.modelo.PersonaPersona" fetch="select">
+            <column name="EntidadContactoID" not-null="true" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="Codigo" length="12" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="60" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="timestamp">
+            <column name="FechaInicio" length="19" not-null="true" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="FechaFin" length="19" not-null="true" />
+        </property>
+        <property name="prioridadId" type="int">
+            <column name="PrioridadID" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="organizacionDetordentrabajos" table="organizacion_detordentrabajo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrdenTrabajoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionDetordentrabajo" />
+        </set>
+    </class>
+</hibernate-mapping>

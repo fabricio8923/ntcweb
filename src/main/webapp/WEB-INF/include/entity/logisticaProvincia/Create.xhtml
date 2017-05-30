@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaProvinciaCreateDlg" widgetVar="LogisticaProvinciaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateLogisticaProvinciaTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaProvinciaCreateForm">
+
+                <h:panelGroup id="display" rendered="#{logisticaProvinciaController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{logisticaProvinciaController.selected.nombre}" title="#{myBundle.CreateLogisticaProvinciaTitle_nombre}" required="true" requiredMessage="#{myBundle.CreateLogisticaProvinciaRequiredMessage_nombre}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{logisticaProvinciaController.selected.codigo}" title="#{myBundle.CreateLogisticaProvinciaTitle_codigo}" size="10" maxlength="10"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_codigoPostal}" for="codigoPostal" />
+                        <p:inputText id="codigoPostal" value="#{logisticaProvinciaController.selected.codigoPostal}" title="#{myBundle.CreateLogisticaProvinciaTitle_codigoPostal}" size="8" maxlength="8"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaProvinciaController.selected.fechaCreacion}" title="#{myBundle.CreateLogisticaProvinciaTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreateLogisticaProvinciaRequiredMessage_fechaCreacion}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaProvinciaController.selected.fechaModificacion}" title="#{myBundle.CreateLogisticaProvinciaTitle_fechaModificacion}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_estadoRegistro}" for="estadoRegistro" />
+                        <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaProvinciaController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreateLogisticaProvinciaRequiredMessage_estadoRegistro}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaProvinciaLabel_departamentoID}" for="departamentoID" />
+                        <p:selectOneMenu id="departamentoID" value="#{logisticaProvinciaController.selected.departamentoID}" required="true" requiredMessage="#{myBundle.CreateLogisticaProvinciaRequiredMessage_departamentoID}" converter="logisticaDepartamentoConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logisticaDepartamentoController.items}"
+                                           var="departamentoIDItem"
+                                           itemValue="#{departamentoIDItem}"
+                                           itemLabel="#{departamentoIDItem.departamentoID.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaProvinciaController.saveNew}" value="#{myBundle.Save}" update="display,:LogisticaProvinciaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaProvinciaCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaProvinciaCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

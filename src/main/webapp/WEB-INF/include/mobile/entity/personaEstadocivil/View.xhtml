@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaEstadocivilViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewPersonaEstadocivilTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaEstadocivilListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaEstadocivilViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{personaEstadocivilController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_estadoCivilID}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.estadoCivilID}" title="#{myBundle.ViewPersonaEstadocivilTitle_estadoCivilID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_nombre}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.nombre}" title="#{myBundle.ViewPersonaEstadocivilTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_descripcion}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.descripcion}" title="#{myBundle.ViewPersonaEstadocivilTitle_descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_abreviacion}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.abreviacion}" title="#{myBundle.ViewPersonaEstadocivilTitle_abreviacion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_fechaCreacion}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaEstadocivilTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_fechaModificacion}"/>
+                            <h:outputText value="#{personaEstadocivilController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaEstadocivilTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaEstadocivilLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaEstadocivilController.selected.estadoRegistro}" title="#{myBundle.EditPersonaEstadocivilTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaEstadocivilRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

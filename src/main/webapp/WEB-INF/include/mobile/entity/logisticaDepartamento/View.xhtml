@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="LogisticaDepartamentoViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewLogisticaDepartamentoTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:LogisticaDepartamentoListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="LogisticaDepartamentoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{logisticaDepartamentoController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_departamentoID}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.departamentoID}" title="#{myBundle.ViewLogisticaDepartamentoTitle_departamentoID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_nombre}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.nombre}" title="#{myBundle.ViewLogisticaDepartamentoTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_codigo}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.codigo}" title="#{myBundle.ViewLogisticaDepartamentoTitle_codigo}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_zonaHoraria}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.zonaHoraria}" title="#{myBundle.ViewLogisticaDepartamentoTitle_zonaHoraria}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_codigoPostal}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.codigoPostal}" title="#{myBundle.ViewLogisticaDepartamentoTitle_codigoPostal}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_fechaCreacion}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaDepartamentoTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_fechaModificacion}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaDepartamentoTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaDepartamentoController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaDepartamentoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_paisID}"/>
+                            <h:outputText value="#{logisticaDepartamentoController.selected.paisID.paisID}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

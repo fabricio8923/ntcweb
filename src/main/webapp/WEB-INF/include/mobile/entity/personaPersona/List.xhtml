@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaPersonaListPage">
+        <pm:header title="#{myBundle.ListPersonaPersonaTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{myBundle.Create}" update=":PersonaPersonaCreatePage:PersonaPersonaCreateForm" actionListener="#{personaPersonaController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:PersonaPersonaCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaPersonaListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{personaPersonaController.items}"
+                             var="item"
+                             rowKey="#{item.entidadNegocioID}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{personaPersonaController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{personaPersonaController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{personaPersonaController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('PersonaPersonaListPage:PersonaPersonaListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('PersonaPersonaListPage:PersonaPersonaListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('PersonaPersonaListPage:PersonaPersonaListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.entidadNegocioID}" filterBy="#{item.entidadNegocioID}" headerText="#{myBundle.ListPersonaPersonaTitle_entidadNegocioID}">
+                        <h:outputText value="#{item.entidadNegocioID}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}" headerText="#{myBundle.ListPersonaPersonaTitle_nombre}">
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.primerApellido}" filterBy="#{item.primerApellido}" headerText="#{myBundle.ListPersonaPersonaTitle_primerApellido}">
+                        <h:outputText value="#{item.primerApellido}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.segundoApellido}" filterBy="#{item.segundoApellido}" headerText="#{myBundle.ListPersonaPersonaTitle_segundoApellido}">
+                        <h:outputText value="#{item.segundoApellido}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.sufijo}" filterBy="#{item.sufijo}" headerText="#{myBundle.ListPersonaPersonaTitle_sufijo}">
+                        <h:outputText value="#{item.sufijo}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.sexo}" filterBy="#{item.sexo}" headerText="#{myBundle.ListPersonaPersonaTitle_sexo}">
+                        <h:outputText value="#{item.sexo}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}" headerText="#{myBundle.ListPersonaPersonaTitle_fechaCreacion}">
+                        <h:outputText value="#{item.fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}" headerText="#{myBundle.ListPersonaPersonaTitle_fechaModificacion}">
+                        <h:outputText value="#{item.fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.usuarioModificacion}" filterBy="#{item.usuarioModificacion}" headerText="#{myBundle.ListPersonaPersonaTitle_usuarioModificacion}">
+                        <h:outputText value="#{item.usuarioModificacion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}" headerText="#{myBundle.ListPersonaPersonaTitle_estadoRegistro}">
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditPersonaPersonaTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.personaEntidadnegocio.descripcion}" filterBy="#{item.personaEntidadnegocio.descripcion}" headerText="#{myBundle.ListPersonaPersonaTitle_personaEntidadnegocio}">
+                        <h:outputText value="#{item.personaEntidadnegocio.descripcion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.estadoCivilID.descripcion}" filterBy="#{item.estadoCivilID.descripcion}" headerText="#{myBundle.ListPersonaPersonaTitle_estadoCivilID}">
+                        <h:outputText value="#{item.estadoCivilID.descripcion}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":PersonaPersonaEditPage:PersonaPersonaEditForm" disabled="#{empty personaPersonaController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:PersonaPersonaEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{personaPersonaController.delete}" update=":growl,datalist" disabled="#{empty personaPersonaController.selected}">
+                    <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{myBundle.Menu}" disabled="#{empty personaPersonaController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{myBundle.PersonaPersonaHeading} #{myBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{myBundle.PersonaPersonaMenuItem_personaEntidadnegocio}" icon="ui-icon-search" update=":PersonaEntidadnegocioEditPage:PersonaEntidadnegocioEditForm" disabled="#{empty personaPersonaController.selected.personaEntidadnegocio}" actionListener="#{personaPersonaController.preparePersonaEntidadnegocio}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:PersonaEntidadnegocioEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{myBundle.PersonaPersonaMenuItem_estadoCivilID}" icon="ui-icon-search" update=":PersonaEstadocivilEditPage:PersonaEstadocivilEditForm" disabled="#{empty personaPersonaController.selected.estadoCivilID}" actionListener="#{personaPersonaController.prepareEstadoCivilID}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:PersonaEstadocivilEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

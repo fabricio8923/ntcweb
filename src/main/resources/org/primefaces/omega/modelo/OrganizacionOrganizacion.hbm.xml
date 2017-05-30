@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.OrganizacionOrganizacion" table="organizacion_organizacion" catalog="ntc" optimistic-lock="version">
+        <id name="entidadNegocioId" type="int">
+            <column name="EntidadNegocioID" />
+            <generator class="foreign">
+                <param name="property">personaEntidadnegocio</param>
+            </generator>
+        </id>
+        <many-to-one name="organizacionGiro" class="org.primefaces.omega.modelo.OrganizacionGiro" fetch="select">
+            <column name="GiroID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionRazonsocial" class="org.primefaces.omega.modelo.OrganizacionRazonsocial" fetch="select">
+            <column name="RazonSocialID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionTipoorganizacion" class="org.primefaces.omega.modelo.OrganizacionTipoorganizacion" fetch="select">
+            <column name="TipoOrganizacionID" not-null="true" />
+        </many-to-one>
+        <one-to-one name="personaEntidadnegocio" class="org.primefaces.omega.modelo.PersonaEntidadnegocio" constrained="true"></one-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="50" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="organizacionOrdentrabajos" table="organizacion_ordentrabajo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadOrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionOrdentrabajo" />
+        </set>
+        <set name="productoProductos" table="producto_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.ProductoProducto" />
+        </set>
+        <set name="logisticaLocacions" table="logistica_locacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.LogisticaLocacion" />
+        </set>
+        <set name="organizacionOrdenservicios" table="organizacion_ordenservicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadOrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionOrdenservicio" />
+        </set>
+        <set name="organizacionServicios" table="organizacion_servicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionServicio" />
+        </set>
+        <set name="logisticaRutas" table="logistica_ruta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.LogisticaRuta" />
+        </set>
+        <set name="organizacionClientes" table="organizacion_cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionCliente" />
+        </set>
+        <set name="organizacionTrabajadors" table="organizacion_trabajador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrganizacionID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionTrabajador" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.ProductoActivo" table="producto_activo" catalog="ntc" optimistic-lock="version">
+        <id name="activoId" type="java.lang.Integer">
+            <column name="ActivoID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalEstado" class="org.primefaces.omega.modelo.GeneralEstado" fetch="select">
+            <column name="CondicionID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalUnidadmedida" class="org.primefaces.omega.modelo.GeneralUnidadmedida" fetch="select">
+            <column name="UnidadMedidaID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="logisticaLocacion" class="org.primefaces.omega.modelo.LogisticaLocacion" fetch="select">
+            <column name="LocacionID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionTrabajador" class="org.primefaces.omega.modelo.OrganizacionTrabajador" fetch="select">
+            <column name="TrabajadorID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoAplicacion" class="org.primefaces.omega.modelo.ProductoAplicacion" fetch="select">
+            <column name="AplicacionID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoProducto" class="org.primefaces.omega.modelo.ProductoProducto" fetch="select">
+            <column name="ProductoID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="50" not-null="true" />
+        </property>
+        <property name="numeroSerie" type="string">
+            <column name="NumeroSerie" length="30" not-null="true" />
+        </property>
+        <property name="codigoBarras" type="string">
+            <column name="CodigoBarras" length="30" not-null="true" />
+        </property>
+        <property name="cantidad" type="long">
+            <column name="Cantidad" not-null="true" />
+        </property>
+        <property name="precioUnitario" type="long">
+            <column name="PrecioUnitario" not-null="true" />
+        </property>
+        <property name="ultimoMantenimiento" type="timestamp">
+            <column name="UltimoMantenimiento" length="19" not-null="true" />
+        </property>
+        <property name="siguienteMantenimiento" type="timestamp">
+            <column name="SiguienteMantenimiento" length="19" not-null="true" />
+        </property>
+        <property name="infoMantenimiento" type="string">
+            <column name="InfoMantenimiento" length="250" not-null="true" />
+        </property>
+        <property name="costoUnidad" type="long">
+            <column name="CostoUnidad" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="productoResponsableactivos" table="producto_responsableactivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ActivoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.ProductoResponsableactivo" />
+        </set>
+    </class>
+</hibernate-mapping>

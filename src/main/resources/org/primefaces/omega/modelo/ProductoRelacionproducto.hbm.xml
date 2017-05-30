@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.ProductoRelacionproducto" table="producto_relacionproducto" catalog="ntc" optimistic-lock="version">
+        <id name="relacionProductoId" type="java.lang.Integer">
+            <column name="RelacionProductoID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalEstado" class="org.primefaces.omega.modelo.GeneralEstado" fetch="select">
+            <column name="EstadoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoProductoByProductoOrigenId" class="org.primefaces.omega.modelo.ProductoProducto" fetch="select">
+            <column name="ProductoOrigenID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoProductoByProductoDestinoId" class="org.primefaces.omega.modelo.ProductoProducto" fetch="select">
+            <column name="ProductoDestinoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoTiporelacion" class="org.primefaces.omega.modelo.ProductoTiporelacion" fetch="select">
+            <column name="TipoRelacionID" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="timestamp">
+            <column name="FechaInicio" length="19" not-null="true" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="FechaFin" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

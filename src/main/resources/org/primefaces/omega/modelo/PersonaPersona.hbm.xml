@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.PersonaPersona" table="persona_persona" catalog="ntc" optimistic-lock="version">
+        <id name="entidadNegocioId" type="int">
+            <column name="EntidadNegocioID" />
+            <generator class="foreign">
+                <param name="property">personaEntidadnegocio</param>
+            </generator>
+        </id>
+        <one-to-one name="personaEntidadnegocio" class="org.primefaces.omega.modelo.PersonaEntidadnegocio" constrained="true"></one-to-one>
+        <many-to-one name="personaEstadocivil" class="org.primefaces.omega.modelo.PersonaEstadocivil" fetch="select">
+            <column name="EstadoCivilID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="PrimerApellido" length="50" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="SegundoApellido" length="50" not-null="true" />
+        </property>
+        <property name="sufijo" type="string">
+            <column name="Sufijo" length="50" not-null="true" />
+        </property>
+        <property name="sexo" type="char">
+            <column name="Sexo" length="1" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="organizacionTrabajadors" table="organizacion_trabajador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PersonaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionTrabajador" />
+        </set>
+        <set name="organizacionOrdentrabajos" table="organizacion_ordentrabajo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadContactoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionOrdentrabajo" />
+        </set>
+        <set name="organizacionOrdenservicios" table="organizacion_ordenservicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadContactoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionOrdenservicio" />
+        </set>
+    </class>
+</hibernate-mapping>

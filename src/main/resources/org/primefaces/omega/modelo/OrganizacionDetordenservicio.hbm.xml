@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.OrganizacionDetordenservicio" table="organizacion_detordenservicio" catalog="ntc" optimistic-lock="version">
+        <id name="detOrdenServicioId" type="java.lang.Integer">
+            <column name="DetOrdenServicioID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalEstado" class="org.primefaces.omega.modelo.GeneralEstado" fetch="select">
+            <column name="EstadoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalMotivoactividad" class="org.primefaces.omega.modelo.GeneralMotivoactividad" fetch="select">
+            <column name="MotivoActividadID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionOrdenservicio" class="org.primefaces.omega.modelo.OrganizacionOrdenservicio" fetch="select">
+            <column name="OrdenServicioID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionServicio" class="org.primefaces.omega.modelo.OrganizacionServicio" fetch="select">
+            <column name="ServicioID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizacionTrabajador" class="org.primefaces.omega.modelo.OrganizacionTrabajador" fetch="select">
+            <column name="TrabajadorID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoInventario" class="org.primefaces.omega.modelo.ProductoInventario" fetch="select">
+            <column name="InventarioID" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="250" not-null="true" />
+        </property>
+        <property name="fechaEstimada" type="timestamp">
+            <column name="FechaEstimada" length="19" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="timestamp">
+            <column name="FechaInicio" length="19" not-null="true" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="FechaFin" length="19" not-null="true" />
+        </property>
+        <property name="validoDesde" type="timestamp">
+            <column name="ValidoDesde" length="19" not-null="true" />
+        </property>
+        <property name="validoHasta" type="timestamp">
+            <column name="ValidoHasta" length="19" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="Observacion" length="300" not-null="true" />
+        </property>
+        <property name="detContratoServicioId" type="int">
+            <column name="DetContratoServicioID" not-null="true" />
+        </property>
+        <property name="ruta" type="string">
+            <column name="Ruta" length="250" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

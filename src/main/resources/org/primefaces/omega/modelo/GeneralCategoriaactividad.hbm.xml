@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.GeneralCategoriaactividad" table="general_categoriaactividad" catalog="ntc" optimistic-lock="version">
+        <id name="categoriaActividadId" type="java.lang.Integer">
+            <column name="CategoriaActividadID" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="50" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="categoriaActividadRegistro" type="boolean">
+            <column name="CategoriaActividadRegistro" not-null="true" />
+        </property>
+        <set name="generalMotivoactividads" table="general_motivoactividad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CategoriaActividadID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.GeneralMotivoactividad" />
+        </set>
+    </class>
+</hibernate-mapping>

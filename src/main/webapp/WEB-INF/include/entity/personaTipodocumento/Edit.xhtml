@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="PersonaTipodocumentoEditDlg" widgetVar="PersonaTipodocumentoEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditPersonaTipodocumentoTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaTipodocumentoEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{personaTipodocumentoController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_tipoDocumentoID}" for="tipoDocumentoID" />
+                        <h:panelGroup>
+                            <h:outputText id="tipoDocumentoID" value="#{personaTipodocumentoController.selected.tipoDocumentoID}" />
+                            <p:tooltip for="tipoDocumentoID" value="#{personaTipodocumentoController.getComponentMessages('tipoDocumentoID', myBundle.EditPersonaTipodocumentoHelpText_tipoDocumentoID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{personaTipodocumentoController.selected.nombre}" title="#{myBundle.EditPersonaTipodocumentoTitle_nombre}" required="true" requiredMessage="#{myBundle.EditPersonaTipodocumentoRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{personaTipodocumentoController.getComponentMessages('nombre', myBundle.EditPersonaTipodocumentoHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{personaTipodocumentoController.selected.descripcion}" title="#{myBundle.EditPersonaTipodocumentoTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{personaTipodocumentoController.getComponentMessages('descripcion', myBundle.EditPersonaTipodocumentoHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_abreviacion}" for="abreviacion" />
+                        <h:panelGroup>
+                            <p:inputText id="abreviacion" value="#{personaTipodocumentoController.selected.abreviacion}" title="#{myBundle.EditPersonaTipodocumentoTitle_abreviacion}" size="200" maxlength="200"/>
+                            <p:tooltip for="abreviacion" value="#{personaTipodocumentoController.getComponentMessages('abreviacion', myBundle.EditPersonaTipodocumentoHelpText_abreviacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaCreacion}" title="#{myBundle.EditPersonaTipodocumentoTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditPersonaTipodocumentoRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{personaTipodocumentoController.getComponentMessages('fechaCreacion', myBundle.EditPersonaTipodocumentoHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaModificacion}" title="#{myBundle.EditPersonaTipodocumentoTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{personaTipodocumentoController.getComponentMessages('fechaModificacion', myBundle.EditPersonaTipodocumentoHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaTipodocumentoLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaTipodocumentoController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaTipodocumentoRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{personaTipodocumentoController.getComponentMessages('estadoRegistro', myBundle.EditPersonaTipodocumentoHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaTipodocumentoController.save}" value="#{myBundle.Save}" update="display,:PersonaTipodocumentoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PersonaTipodocumentoEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PersonaTipodocumentoEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

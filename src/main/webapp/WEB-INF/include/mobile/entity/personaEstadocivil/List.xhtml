@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaEstadocivilListPage">
+        <pm:header title="#{myBundle.ListPersonaEstadocivilTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{myBundle.Create}" update=":PersonaEstadocivilCreatePage:PersonaEstadocivilCreateForm" actionListener="#{personaEstadocivilController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:PersonaEstadocivilCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaEstadocivilListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{personaEstadocivilController.items}"
+                             var="item"
+                             rowKey="#{item.estadoCivilID}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{personaEstadocivilController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('PersonaEstadocivilListPage:PersonaEstadocivilListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('PersonaEstadocivilListPage:PersonaEstadocivilListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('PersonaEstadocivilListPage:PersonaEstadocivilListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.estadoCivilID}" filterBy="#{item.estadoCivilID}" headerText="#{myBundle.ListPersonaEstadocivilTitle_estadoCivilID}">
+                        <h:outputText value="#{item.estadoCivilID}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}" headerText="#{myBundle.ListPersonaEstadocivilTitle_nombre}">
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.descripcion}" filterBy="#{item.descripcion}" headerText="#{myBundle.ListPersonaEstadocivilTitle_descripcion}">
+                        <h:outputText value="#{item.descripcion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.abreviacion}" filterBy="#{item.abreviacion}" headerText="#{myBundle.ListPersonaEstadocivilTitle_abreviacion}">
+                        <h:outputText value="#{item.abreviacion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}" headerText="#{myBundle.ListPersonaEstadocivilTitle_fechaCreacion}">
+                        <h:outputText value="#{item.fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}" headerText="#{myBundle.ListPersonaEstadocivilTitle_fechaModificacion}">
+                        <h:outputText value="#{item.fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}" headerText="#{myBundle.ListPersonaEstadocivilTitle_estadoRegistro}">
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditPersonaEstadocivilTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaEstadocivilRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:column>
+
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":PersonaEstadocivilEditPage:PersonaEstadocivilEditForm" disabled="#{empty personaEstadocivilController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:PersonaEstadocivilEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{personaEstadocivilController.delete}" update=":growl,datalist" disabled="#{empty personaEstadocivilController.selected}">
+                    <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{myBundle.Menu}" disabled="#{empty personaEstadocivilController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{myBundle.PersonaEstadocivilHeading} #{myBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{myBundle.PersonaEstadocivilMenuItem_personaPersonaCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty personaEstadocivilController.selected.personaPersonaCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{personaEstadocivilController.navigatePersonaPersonaCollection()}"/>
+                        </p:menuitem>  
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

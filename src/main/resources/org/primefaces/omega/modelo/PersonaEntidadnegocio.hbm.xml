@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.PersonaEntidadnegocio" table="persona_entidadnegocio" catalog="ntc" optimistic-lock="version">
+        <id name="entidadNegocioId" type="java.lang.Integer">
+            <column name="EntidadNegocioID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="personaTipoentidad" class="org.primefaces.omega.modelo.PersonaTipoentidad" fetch="select">
+            <column name="TipoEntidadID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="150" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="200" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="timestamp">
+            <column name="FechaNacimiento" length="19" not-null="true" />
+        </property>
+        <property name="fechaCese" type="timestamp">
+            <column name="FechaCese" length="19" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <one-to-one name="personaPersona" class="org.primefaces.omega.modelo.PersonaPersona"></one-to-one>
+        <one-to-one name="organizacionOrganizacion" class="org.primefaces.omega.modelo.OrganizacionOrganizacion"></one-to-one>
+        <set name="personaDocumentoentidads" table="persona_documentoentidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadNegocioID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.PersonaDocumentoentidad" />
+        </set>
+        <one-to-one name="organizacionProveedorByEntidadNegocioId" class="org.primefaces.omega.modelo.OrganizacionProveedor"></one-to-one>
+        <set name="organizacionClientesForEntidadNegocioId" table="organizacion_cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadNegocioID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionCliente" />
+        </set>
+        <set name="personaDireccionentidads" table="persona_direccionentidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EntidadNegocioID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.PersonaDireccionentidad" />
+        </set>
+        <set name="organizacionProveedorsForContactoId" table="organizacion_proveedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ContactoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionProveedor" />
+        </set>
+        <set name="organizacionClientesForContactoId" table="organizacion_cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ContactoID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionCliente" />
+        </set>
+    </class>
+</hibernate-mapping>

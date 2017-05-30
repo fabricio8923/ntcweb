@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="LogisticaPaisListForm">
+
+        <p:panel header="#{myBundle.ListLogisticaPaisTitle}">
+            <p:contextMenu id="LogisticaPaisDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('LogisticaPaisListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('LogisticaPaisListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('LogisticaPaisListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('LogisticaPaisListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.LogisticaPaisMenuItem_logisticaDepartamentoCollection}" icon="ui-icon-search"  action="#{logisticaPaisController.navigateLogisticaDepartamentoCollection}" disabled="#{logisticaPaisController.isLogisticaDepartamentoCollectionEmpty}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{logisticaPaisController.items}"
+                         lazy="false"
+                         reflow="true"                        
+                         var="item"
+                         rowKey="#{item.paisID}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{logisticaPaisController.selected}"
+                         filteredValue="#{logisticaPaisController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{logisticaPaisController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.paisID}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:LogisticaPaisDataTableContextMenu"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:LogisticaPaisDataTableContextMenu"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('LogisticaPaisListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.paisID}" filterBy="#{item.paisID}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_paisID}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.paisID}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.codigoISO}" filterBy="#{item.codigoISO}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_codigoISO}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codigoISO}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.moneda}" filterBy="#{item.moneda}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_moneda}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.moneda}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.zonaHoraria}" filterBy="#{item.zonaHoraria}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_zonaHoraria}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.zonaHoraria}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.codigoPostal}" filterBy="#{item.codigoPostal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaPaisTitle_codigoPostal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codigoPostal}"/>
+                </p:column>
+
+                <ui:remove>
+                    <p:column sortBy="#{item.inmutable}" filterBy="#{item.inmutable}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaPaisTitle_inmutable}"/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox id="inmutable" value="#{item.inmutable}" title="#{myBundle.EditLogisticaPaisTitle_inmutable}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_inmutable}" disabled="true"/>
+                    </p:column>
+                </ui:remove>
+                <ui:remove>
+                    <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaPaisTitle_fechaCreacion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                </ui:remove>
+                <ui:remove>
+                    <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaPaisTitle_fechaModificacion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                </ui:remove>
+                <ui:remove>
+                    <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaPaisTitle_estadoRegistro}"/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditLogisticaPaisTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:column>
+                </ui:remove>
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{logisticaPaisController.prepareCreate}" update=":LogisticaPaisCreateForm" oncomplete="PF('LogisticaPaisCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":LogisticaPaisViewForm" oncomplete="PF('LogisticaPaisViewDialog').show()" disabled="#{empty logisticaPaisController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":LogisticaPaisEditForm" oncomplete="PF('LogisticaPaisEditDialog').show()" disabled="#{empty logisticaPaisController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{logisticaPaisController.delete}" update=":growl,datalist" disabled="#{empty logisticaPaisController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

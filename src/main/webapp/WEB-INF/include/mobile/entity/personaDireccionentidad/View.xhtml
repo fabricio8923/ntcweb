@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaDireccionentidadViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewPersonaDireccionentidadTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaDireccionentidadListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaDireccionentidadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{personaDireccionentidadController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_direccionEntidadID}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.direccionEntidadID}" title="#{myBundle.ViewPersonaDireccionentidadTitle_direccionEntidadID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_nombre}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.nombre}" title="#{myBundle.ViewPersonaDireccionentidadTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_descripcion}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.descripcion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_latitud}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.latitud}" title="#{myBundle.ViewPersonaDireccionentidadTitle_latitud}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_longitud}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.longitud}" title="#{myBundle.ViewPersonaDireccionentidadTitle_longitud}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_fechaCreacion}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_fechaModificacion}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaDireccionentidadTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaDireccionentidadController.selected.estadoRegistro}" title="#{myBundle.EditPersonaDireccionentidadTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaDireccionentidadRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_distritoID}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.distritoID.distritoID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_entidadNegocioID}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.entidadNegocioID.descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_tipoDireccionID}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.tipoDireccionID.descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDireccionentidadLabel_usoDireccionID}"/>
+                            <h:outputText value="#{personaDireccionentidadController.selected.usoDireccionID.descripcion}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

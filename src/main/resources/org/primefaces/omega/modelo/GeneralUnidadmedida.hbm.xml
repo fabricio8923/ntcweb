@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.GeneralUnidadmedida" table="general_unidadmedida" catalog="ntc" optimistic-lock="version">
+        <id name="unidadMedidaId" type="java.lang.Integer">
+            <column name="UnidadMedidaID" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="50" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="unidadMedidaRegistro" type="boolean">
+            <column name="UnidadMedidaRegistro" not-null="true" />
+        </property>
+        <set name="logisticaRutas" table="logistica_ruta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UnidadMedidaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.LogisticaRuta" />
+        </set>
+        <set name="productoActivos" table="producto_activo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UnidadMedidaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.ProductoActivo" />
+        </set>
+        <set name="productoInventarios" table="producto_inventario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UnidadMedidaID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.ProductoInventario" />
+        </set>
+    </class>
+</hibernate-mapping>

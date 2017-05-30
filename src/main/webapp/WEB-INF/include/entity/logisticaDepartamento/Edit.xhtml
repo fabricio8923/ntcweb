@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="LogisticaDepartamentoEditDlg" widgetVar="LogisticaDepartamentoEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditLogisticaDepartamentoTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaDepartamentoEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{logisticaDepartamentoController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_departamentoID}" for="departamentoID" />
+                        <h:outputText id="departamentoID" value="#{logisticaDepartamentoController.selected.departamentoID}" />
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{logisticaDepartamentoController.selected.nombre}" title="#{myBundle.EditLogisticaDepartamentoTitle_nombre}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_nombre}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{logisticaDepartamentoController.selected.codigo}" title="#{myBundle.EditLogisticaDepartamentoTitle_codigo}" size="10" maxlength="10"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_zonaHoraria}" for="zonaHoraria" />
+                        <p:inputText id="zonaHoraria" value="#{logisticaDepartamentoController.selected.zonaHoraria}" title="#{myBundle.EditLogisticaDepartamentoTitle_zonaHoraria}"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_codigoPostal}" for="codigoPostal" />
+                        <p:inputText id="codigoPostal" value="#{logisticaDepartamentoController.selected.codigoPostal}" title="#{myBundle.EditLogisticaDepartamentoTitle_codigoPostal}" size="8" maxlength="8"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaDepartamentoController.selected.fechaCreacion}" title="#{myBundle.EditLogisticaDepartamentoTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_fechaCreacion}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaDepartamentoController.selected.fechaModificacion}" title="#{myBundle.EditLogisticaDepartamentoTitle_fechaModificacion}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_estadoRegistro}" for="estadoRegistro" />
+                        <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaDepartamentoController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_estadoRegistro}"/>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaDepartamentoLabel_paisID}" for="paisID" />
+                        <p:selectOneMenu id="paisID" value="#{logisticaDepartamentoController.selected.paisID}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_paisID}" converter="logisticaPaisConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logisticaPaisController.items}"
+                                           var="paisIDItem"
+                                           itemValue="#{paisIDItem}"
+                                           itemLabel="#{paisIDItem.paisID.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaDepartamentoController.save}" value="#{myBundle.Save}" update="display,:LogisticaDepartamentoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaDepartamentoEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaDepartamentoEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

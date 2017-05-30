@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaTipodocumentoCreateDlg" widgetVar="PersonaTipodocumentoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreatePersonaTipodocumentoTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaTipodocumentoCreateForm">
+
+                <h:panelGroup id="display" rendered="#{personaTipodocumentoController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{personaTipodocumentoController.selected.nombre}" title="#{myBundle.CreatePersonaTipodocumentoTitle_nombre}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{personaTipodocumentoController.getComponentMessages('nombre', myBundle.CreatePersonaTipodocumentoHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{personaTipodocumentoController.selected.descripcion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{personaTipodocumentoController.getComponentMessages('descripcion', myBundle.CreatePersonaTipodocumentoHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_abreviacion}" for="abreviacion" />
+                        <h:panelGroup>
+                            <p:inputText id="abreviacion" value="#{personaTipodocumentoController.selected.abreviacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_abreviacion}" size="200" maxlength="200"/>
+                            <p:tooltip for="abreviacion" value="#{personaTipodocumentoController.getComponentMessages('abreviacion', myBundle.CreatePersonaTipodocumentoHelpText_abreviacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaCreacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{personaTipodocumentoController.getComponentMessages('fechaCreacion', myBundle.CreatePersonaTipodocumentoHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaModificacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{personaTipodocumentoController.getComponentMessages('fechaModificacion', myBundle.CreatePersonaTipodocumentoHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaTipodocumentoController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{personaTipodocumentoController.getComponentMessages('estadoRegistro', myBundle.CreatePersonaTipodocumentoHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaTipodocumentoController.saveNew}" value="#{myBundle.Save}" update="display,:PersonaTipodocumentoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PersonaTipodocumentoCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PersonaTipodocumentoCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="LogisticaDistritoListPage">
+        <pm:header title="#{myBundle.ListLogisticaDistritoTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{myBundle.Create}" update=":LogisticaDistritoCreatePage:LogisticaDistritoCreateForm" actionListener="#{logisticaDistritoController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:LogisticaDistritoCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="LogisticaDistritoListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{logisticaDistritoController.items}"
+                             var="item"
+                             rowKey="#{item.distritoID}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{logisticaDistritoController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{logisticaDistritoController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{logisticaDistritoController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('LogisticaDistritoListPage:LogisticaDistritoListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('LogisticaDistritoListPage:LogisticaDistritoListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('LogisticaDistritoListPage:LogisticaDistritoListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.distritoID}" filterBy="#{item.distritoID}" headerText="#{myBundle.ListLogisticaDistritoTitle_distritoID}">
+                        <h:outputText value="#{item.distritoID}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}" headerText="#{myBundle.ListLogisticaDistritoTitle_nombre}">
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.codigo}" filterBy="#{item.codigo}" headerText="#{myBundle.ListLogisticaDistritoTitle_codigo}">
+                        <h:outputText value="#{item.codigo}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.codigoPostal}" filterBy="#{item.codigoPostal}" headerText="#{myBundle.ListLogisticaDistritoTitle_codigoPostal}">
+                        <h:outputText value="#{item.codigoPostal}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}" headerText="#{myBundle.ListLogisticaDistritoTitle_fechaCreacion}">
+                        <h:outputText value="#{item.fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}" headerText="#{myBundle.ListLogisticaDistritoTitle_fechaModificacion}">
+                        <h:outputText value="#{item.fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+                    <ui:remove>
+                        <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}" headerText="#{myBundle.ListLogisticaDistritoTitle_estadoRegistro}">
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditLogisticaDistritoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaDistritoRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </p:column>
+                    </ui:remove>>
+                    <ui:remove>
+                        <p:column sortBy="#{item.provinciaID.provinciaID}" filterBy="#{item.provinciaID.provinciaID}" headerText="#{myBundle.ListLogisticaDistritoTitle_provinciaID}">
+                            <h:outputText value="#{item.provinciaID.provinciaID}"/>
+                        </p:column>
+                    </ui:remove>>
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":LogisticaDistritoEditPage:LogisticaDistritoEditForm" disabled="#{empty logisticaDistritoController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:LogisticaDistritoEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{logisticaDistritoController.delete}" update=":growl,datalist" disabled="#{empty logisticaDistritoController.selected}">
+                    <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{myBundle.Menu}" disabled="#{empty logisticaDistritoController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{myBundle.LogisticaDistritoHeading} #{myBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{myBundle.LogisticaDistritoMenuItem_provinciaID}" icon="ui-icon-search" update=":LogisticaProvinciaEditPage:LogisticaProvinciaEditForm" disabled="#{empty logisticaDistritoController.selected.provinciaID}" actionListener="#{logisticaDistritoController.prepareProvinciaID}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:LogisticaProvinciaEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

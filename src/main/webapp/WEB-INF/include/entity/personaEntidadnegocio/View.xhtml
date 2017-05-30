@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaEntidadnegocioViewDlg" widgetVar="PersonaEntidadnegocioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPersonaEntidadnegocioTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaEntidadnegocioViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personaEntidadnegocioController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_entidadNegocioID}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.entidadNegocioID}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_entidadNegocioID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_nombre}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.nombre}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_descripcion}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.descripcion}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_abreviacion}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.abreviacion}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_abreviacion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.fechaNacimiento}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_fechaCese}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.fechaCese}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_fechaCese}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaEntidadnegocioTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaEntidadnegocioController.selected.estadoRegistro}" title="#{myBundle.EditPersonaEntidadnegocioTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaEntidadnegocioRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_tipoEntidadID}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.tipoEntidadID.descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaEntidadnegocioLabel_personaPersona}"/>
+                        <h:outputText value="#{personaEntidadnegocioController.selected.personaPersona.entidadNegocioID}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PersonaEntidadnegocioViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

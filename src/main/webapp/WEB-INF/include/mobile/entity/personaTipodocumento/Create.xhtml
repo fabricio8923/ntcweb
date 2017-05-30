@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaTipodocumentoCreatePage" lazy="true">
+        <pm:header title="#{myBundle.CreatePersonaTipodocumentoTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaTipodocumentoListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaTipodocumentoCreateForm">
+
+                <h:panelGroup id="display" rendered="#{personaTipodocumentoController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_nombre}" for="nombre" />
+                            <h:panelGroup>
+                                <p:inputText id="nombre" value="#{personaTipodocumentoController.selected.nombre}" title="#{myBundle.CreatePersonaTipodocumentoTitle_nombre}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_nombre}" size="100" maxlength="100"/>
+                                <p:tooltip for="nombre" value="#{personaTipodocumentoController.getComponentMessages('nombre', myBundle.CreatePersonaTipodocumentoHelpText_nombre)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_descripcion}" for="descripcion" />
+                            <h:panelGroup>
+                                <p:inputText id="descripcion" value="#{personaTipodocumentoController.selected.descripcion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_descripcion}" size="100" maxlength="100"/>
+                                <p:tooltip for="descripcion" value="#{personaTipodocumentoController.getComponentMessages('descripcion', myBundle.CreatePersonaTipodocumentoHelpText_descripcion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_abreviacion}" for="abreviacion" />
+                            <h:panelGroup>
+                                <p:inputText id="abreviacion" value="#{personaTipodocumentoController.selected.abreviacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_abreviacion}" size="200" maxlength="200"/>
+                                <p:tooltip for="abreviacion" value="#{personaTipodocumentoController.getComponentMessages('abreviacion', myBundle.CreatePersonaTipodocumentoHelpText_abreviacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_fechaCreacion}" for="fechaCreacion" />
+                            <h:panelGroup>
+                                <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaCreacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_fechaCreacion}" showOn="button"/>
+                                <p:tooltip for="fechaCreacion" value="#{personaTipodocumentoController.getComponentMessages('fechaCreacion', myBundle.CreatePersonaTipodocumentoHelpText_fechaCreacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_fechaModificacion}" for="fechaModificacion" />
+                            <h:panelGroup>
+                                <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaTipodocumentoController.selected.fechaModificacion}" title="#{myBundle.CreatePersonaTipodocumentoTitle_fechaModificacion}"  showOn="button"/>
+                                <p:tooltip for="fechaModificacion" value="#{personaTipodocumentoController.getComponentMessages('fechaModificacion', myBundle.CreatePersonaTipodocumentoHelpText_fechaModificacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePersonaTipodocumentoLabel_estadoRegistro}" for="estadoRegistro" />
+                            <h:panelGroup>
+                                <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaTipodocumentoController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreatePersonaTipodocumentoRequiredMessage_estadoRegistro}"/>
+                                <p:tooltip for="estadoRegistro" value="#{personaTipodocumentoController.getComponentMessages('estadoRegistro', myBundle.CreatePersonaTipodocumentoHelpText_estadoRegistro)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{personaTipodocumentoController.saveNew}" value="#{myBundle.Save}" update="display,:PersonaTipodocumentoListPage:PersonaTipodocumentoListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:PersonaTipodocumentoListPage')}">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

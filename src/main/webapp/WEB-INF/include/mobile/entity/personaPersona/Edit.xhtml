@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaPersonaEditPage" lazy="true">
+        <pm:header title="#{myBundle.EditPersonaPersonaTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaPersonaListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaPersonaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{personaPersonaController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{myBundle.EditPersonaPersonaLabel_entidadNegocioID}" for="entidadNegocioID" />
+                            <h:panelGroup>
+                                <h:outputText id="entidadNegocioID" value="#{personaPersonaController.selected.entidadNegocioID}" />
+                                <p:tooltip for="entidadNegocioID" value="#{personaPersonaController.getComponentMessages('entidadNegocioID', myBundle.EditPersonaPersonaHelpText_entidadNegocioID)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_nombre}" for="nombre" />
+                            <h:panelGroup>
+                                <p:inputText id="nombre" value="#{personaPersonaController.selected.nombre}" title="#{myBundle.EditPersonaPersonaTitle_nombre}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_nombre}" size="60" maxlength="60"/>
+                                <p:tooltip for="nombre" value="#{personaPersonaController.getComponentMessages('nombre', myBundle.EditPersonaPersonaHelpText_nombre)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_primerApellido}" for="primerApellido" />
+                            <h:panelGroup>
+                                <p:inputText id="primerApellido" value="#{personaPersonaController.selected.primerApellido}" title="#{myBundle.EditPersonaPersonaTitle_primerApellido}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_primerApellido}" size="50" maxlength="50"/>
+                                <p:tooltip for="primerApellido" value="#{personaPersonaController.getComponentMessages('primerApellido', myBundle.EditPersonaPersonaHelpText_primerApellido)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_segundoApellido}" for="segundoApellido" />
+                            <h:panelGroup>
+                                <p:inputText id="segundoApellido" value="#{personaPersonaController.selected.segundoApellido}" title="#{myBundle.EditPersonaPersonaTitle_segundoApellido}" size="50" maxlength="50"/>
+                                <p:tooltip for="segundoApellido" value="#{personaPersonaController.getComponentMessages('segundoApellido', myBundle.EditPersonaPersonaHelpText_segundoApellido)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_sufijo}" for="sufijo" />
+                            <h:panelGroup>
+                                <p:inputText id="sufijo" value="#{personaPersonaController.selected.sufijo}" title="#{myBundle.EditPersonaPersonaTitle_sufijo}" size="50" maxlength="50"/>
+                                <p:tooltip for="sufijo" value="#{personaPersonaController.getComponentMessages('sufijo', myBundle.EditPersonaPersonaHelpText_sufijo)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_sexo}" for="sexo" />
+                            <h:panelGroup>
+                                <p:inputText id="sexo" value="#{personaPersonaController.selected.sexo}" title="#{myBundle.EditPersonaPersonaTitle_sexo}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_sexo}"/>
+                                <p:tooltip for="sexo" value="#{personaPersonaController.getComponentMessages('sexo', myBundle.EditPersonaPersonaHelpText_sexo)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_fechaCreacion}" for="fechaCreacion" />
+                            <h:panelGroup>
+                                <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaPersonaController.selected.fechaCreacion}" title="#{myBundle.EditPersonaPersonaTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_fechaCreacion}" showOn="button"/>
+                                <p:tooltip for="fechaCreacion" value="#{personaPersonaController.getComponentMessages('fechaCreacion', myBundle.EditPersonaPersonaHelpText_fechaCreacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_fechaModificacion}" for="fechaModificacion" />
+                            <h:panelGroup>
+                                <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaPersonaController.selected.fechaModificacion}" title="#{myBundle.EditPersonaPersonaTitle_fechaModificacion}"  showOn="button"/>
+                                <p:tooltip for="fechaModificacion" value="#{personaPersonaController.getComponentMessages('fechaModificacion', myBundle.EditPersonaPersonaHelpText_fechaModificacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_usuarioModificacion}" for="usuarioModificacion" />
+                            <h:panelGroup>
+                                <p:inputText id="usuarioModificacion" value="#{personaPersonaController.selected.usuarioModificacion}" title="#{myBundle.EditPersonaPersonaTitle_usuarioModificacion}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_usuarioModificacion}" size="20" maxlength="20"/>
+                                <p:tooltip for="usuarioModificacion" value="#{personaPersonaController.getComponentMessages('usuarioModificacion', myBundle.EditPersonaPersonaHelpText_usuarioModificacion)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_estadoRegistro}" for="estadoRegistro" />
+                            <h:panelGroup>
+                                <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaPersonaController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_estadoRegistro}"/>
+                                <p:tooltip for="estadoRegistro" value="#{personaPersonaController.getComponentMessages('estadoRegistro', myBundle.EditPersonaPersonaHelpText_estadoRegistro)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_personaEntidadnegocio}" for="personaEntidadnegocio" />
+                            <h:panelGroup>
+                                <p:selectOneMenu id="personaEntidadnegocio" value="#{personaPersonaController.selected.personaEntidadnegocio}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_personaEntidadnegocio}" converter="personaEntidadnegocioConverter">
+                                    <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{personaEntidadnegocioController.items}"
+                                                   var="personaEntidadnegocioItem"
+                                                   itemValue="#{personaEntidadnegocioItem}"
+                                                   itemLabel="#{personaEntidadnegocioItem.descripcion.toString()}"
+                                                   />
+
+                                </p:selectOneMenu>
+                                <p:tooltip for="personaEntidadnegocio" value="#{personaPersonaController.getComponentMessages('personaEntidadnegocio', myBundle.EditPersonaPersonaHelpText_personaEntidadnegocio)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditPersonaPersonaLabel_estadoCivilID}" for="estadoCivilID" />
+                            <h:panelGroup>
+                                <p:selectOneMenu id="estadoCivilID" value="#{personaPersonaController.selected.estadoCivilID}" required="true" requiredMessage="#{myBundle.EditPersonaPersonaRequiredMessage_estadoCivilID}" converter="personaEstadocivilConverter">
+                                    <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{personaEstadocivilController.items}"
+                                                   var="estadoCivilIDItem"
+                                                   itemValue="#{estadoCivilIDItem}"
+                                                   itemLabel="#{estadoCivilIDItem.descripcion.toString()}"
+                                                   />
+
+                                </p:selectOneMenu>
+                                <p:tooltip for="estadoCivilID" value="#{personaPersonaController.getComponentMessages('estadoCivilID', myBundle.EditPersonaPersonaHelpText_estadoCivilID)}"/>
+                            </h:panelGroup>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{personaPersonaController.save}" value="#{myBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:PersonaPersonaListPage:PersonaPersonaListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:PersonaPersonaListPage')}">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

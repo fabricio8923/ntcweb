@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.ProductoProductoatributo" table="producto_productoatributo" catalog="ntc" optimistic-lock="version">
+        <id name="productoAtributoId" type="java.lang.Integer">
+            <column name="ProductoAtributoID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalEstado" class="org.primefaces.omega.modelo.GeneralEstado" fetch="select">
+            <column name="EstadoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoAtributo" class="org.primefaces.omega.modelo.ProductoAtributo" fetch="select">
+            <column name="AtributoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productoProducto" class="org.primefaces.omega.modelo.ProductoProducto" fetch="select">
+            <column name="ProductoID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="abreviacion" type="string">
+            <column name="Abreviacion" length="50" not-null="true" />
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="FechaActualizacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

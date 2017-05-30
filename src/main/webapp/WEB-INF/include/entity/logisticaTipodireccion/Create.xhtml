@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaTipodireccionCreateDlg" widgetVar="LogisticaTipodireccionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateLogisticaTipodireccionTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaTipodireccionCreateForm">
+
+                <h:panelGroup id="display" rendered="#{logisticaTipodireccionController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{logisticaTipodireccionController.selected.nombre}" title="#{myBundle.CreateLogisticaTipodireccionTitle_nombre}" required="true" requiredMessage="#{myBundle.CreateLogisticaTipodireccionRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{logisticaTipodireccionController.getComponentMessages('nombre', myBundle.CreateLogisticaTipodireccionHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{logisticaTipodireccionController.selected.descripcion}" title="#{myBundle.CreateLogisticaTipodireccionTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{logisticaTipodireccionController.getComponentMessages('descripcion', myBundle.CreateLogisticaTipodireccionHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_abreviacion}" for="abreviacion" />
+                        <h:panelGroup>
+                            <p:inputText id="abreviacion" value="#{logisticaTipodireccionController.selected.abreviacion}" title="#{myBundle.CreateLogisticaTipodireccionTitle_abreviacion}" size="200" maxlength="200"/>
+                            <p:tooltip for="abreviacion" value="#{logisticaTipodireccionController.getComponentMessages('abreviacion', myBundle.CreateLogisticaTipodireccionHelpText_abreviacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaTipodireccionController.selected.fechaCreacion}" title="#{myBundle.CreateLogisticaTipodireccionTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreateLogisticaTipodireccionRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{logisticaTipodireccionController.getComponentMessages('fechaCreacion', myBundle.CreateLogisticaTipodireccionHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaTipodireccionController.selected.fechaModificacion}" title="#{myBundle.CreateLogisticaTipodireccionTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{logisticaTipodireccionController.getComponentMessages('fechaModificacion', myBundle.CreateLogisticaTipodireccionHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaTipodireccionLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaTipodireccionController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreateLogisticaTipodireccionRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{logisticaTipodireccionController.getComponentMessages('estadoRegistro', myBundle.CreateLogisticaTipodireccionHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaTipodireccionController.saveNew}" value="#{myBundle.Save}" update="display,:LogisticaTipodireccionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaTipodireccionCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaTipodireccionCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

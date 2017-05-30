@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaDepartamentoViewDlg" widgetVar="LogisticaDepartamentoViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewLogisticaDepartamentoTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaDepartamentoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{logisticaDepartamentoController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_departamentoID}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.departamentoID}" title="#{myBundle.ViewLogisticaDepartamentoTitle_departamentoID}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_nombre}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.nombre}" title="#{myBundle.ViewLogisticaDepartamentoTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_codigo}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.codigo}" title="#{myBundle.ViewLogisticaDepartamentoTitle_codigo}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_zonaHoraria}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.zonaHoraria}" title="#{myBundle.ViewLogisticaDepartamentoTitle_zonaHoraria}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_codigoPostal}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.codigoPostal}" title="#{myBundle.ViewLogisticaDepartamentoTitle_codigoPostal}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_fechaCreacion}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaDepartamentoTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_fechaModificacion}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaDepartamentoTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaDepartamentoController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaDepartamentoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaDepartamentoRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaDepartamentoLabel_paisID}"/>
+                        <h:outputText value="#{logisticaDepartamentoController.selected.paisID.paisID}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('LogisticaDepartamentoViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

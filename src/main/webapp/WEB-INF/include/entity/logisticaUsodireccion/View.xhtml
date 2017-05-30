@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaUsodireccionViewDlg" widgetVar="LogisticaUsodireccionViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewLogisticaUsodireccionTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaUsodireccionViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{logisticaUsodireccionController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_usoDireccionID}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.usoDireccionID}" title="#{myBundle.ViewLogisticaUsodireccionTitle_usoDireccionID}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_nombre}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.nombre}" title="#{myBundle.ViewLogisticaUsodireccionTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_descripcion}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.descripcion}" title="#{myBundle.ViewLogisticaUsodireccionTitle_descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_abreviacion}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.abreviacion}" title="#{myBundle.ViewLogisticaUsodireccionTitle_abreviacion}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_fechaCreacion}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaUsodireccionTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_fechaModificacion}"/>
+                        <h:outputText value="#{logisticaUsodireccionController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaUsodireccionTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaUsodireccionLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaUsodireccionController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaUsodireccionTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaUsodireccionRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:panelGrid>
+                  <p:commandButton value="#{myBundle.Close}" onclick="PF('LogisticaUsodireccionViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

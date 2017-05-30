@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.OrganizacionCliente" table="organizacion_cliente" catalog="ntc" optimistic-lock="version">
+        <id name="clienteId" type="java.lang.Integer">
+            <column name="ClienteID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="organizacionOrganizacion" class="org.primefaces.omega.modelo.OrganizacionOrganizacion" fetch="select">
+            <column name="OrganizacionID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personaEntidadnegocioByEntidadNegocioId" class="org.primefaces.omega.modelo.PersonaEntidadnegocio" fetch="select">
+            <column name="EntidadNegocioID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personaEntidadnegocioByContactoId" class="org.primefaces.omega.modelo.PersonaEntidadnegocio" fetch="select">
+            <column name="ContactoID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="60" not-null="true" />
+        </property>
+        <property name="numeroCuenta" type="string">
+            <column name="NumeroCuenta" length="50" not-null="true" />
+        </property>
+        <property name="cuentaBancaria" type="string">
+            <column name="CuentaBancaria" length="50" not-null="true" />
+        </property>
+        <property name="creditoLimite" type="long">
+            <column name="CreditoLimite" not-null="true" />
+        </property>
+        <property name="calificacionCrediticia" type="string">
+            <column name="CalificacionCrediticia" length="50" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="Codigo" length="50" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="UsuarioModificacion" length="20" not-null="true" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+        <set name="organizacionOrdenservicios" table="organizacion_ordenservicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ClienteID" not-null="true" />
+            </key>
+            <one-to-many class="org.primefaces.omega.modelo.OrganizacionOrdenservicio" />
+        </set>
+    </class>
+</hibernate-mapping>

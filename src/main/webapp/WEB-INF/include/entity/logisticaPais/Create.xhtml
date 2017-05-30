@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaPaisCreateDlg" widgetVar="LogisticaPaisCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateLogisticaPaisTitle}" responsive="true" closeOnEscape="true">
+
+            <h:form id="LogisticaPaisCreateForm">
+
+                <h:panelGroup id="display" rendered="#{logisticaPaisController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{logisticaPaisController.selected.nombre}" title="#{myBundle.CreateLogisticaPaisTitle_nombre}" required="true" requiredMessage="#{myBundle.CreateLogisticaPaisRequiredMessage_nombre}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_codigoISO}" for="codigoISO" />
+                        <p:inputText id="codigoISO" value="#{logisticaPaisController.selected.codigoISO}" title="#{myBundle.CreateLogisticaPaisTitle_codigoISO}" size="10" maxlength="10"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_moneda}" for="moneda" />
+                        <p:inputText id="moneda" value="#{logisticaPaisController.selected.moneda}" title="#{myBundle.CreateLogisticaPaisTitle_moneda}" size="4" maxlength="4"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_zonaHoraria}" for="zonaHoraria" />
+                        <p:inputText id="zonaHoraria" value="#{logisticaPaisController.selected.zonaHoraria}" title="#{myBundle.CreateLogisticaPaisTitle_zonaHoraria}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_codigoPostal}" for="codigoPostal" />
+                        <p:inputText id="codigoPostal" value="#{logisticaPaisController.selected.codigoPostal}" title="#{myBundle.CreateLogisticaPaisTitle_codigoPostal}" size="8" maxlength="8"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_inmutable}" for="inmutable" />
+                        <p:selectBooleanCheckbox id="inmutable" value="#{logisticaPaisController.selected.inmutable}" required="true" requiredMessage="#{myBundle.CreateLogisticaPaisRequiredMessage_inmutable}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaPaisController.selected.fechaCreacion}" title="#{myBundle.CreateLogisticaPaisTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreateLogisticaPaisRequiredMessage_fechaCreacion}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaPaisController.selected.fechaModificacion}" title="#{myBundle.CreateLogisticaPaisTitle_fechaModificacion}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateLogisticaPaisLabel_estadoRegistro}" for="estadoRegistro" />
+                        <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaPaisController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreateLogisticaPaisRequiredMessage_estadoRegistro}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaPaisController.saveNew}" value="#{myBundle.Save}" update="display,:LogisticaPaisListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaPaisCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaPaisCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

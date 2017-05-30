@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="LogisticaTipodireccionEditDlg" widgetVar="LogisticaTipodireccionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditLogisticaTipodireccionTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaTipodireccionEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{logisticaTipodireccionController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_tipoDireccionID}" for="tipoDireccionID" />
+                        <h:panelGroup>
+                            <h:outputText id="tipoDireccionID" value="#{logisticaTipodireccionController.selected.tipoDireccionID}" />
+                            <p:tooltip for="tipoDireccionID" value="#{logisticaTipodireccionController.getComponentMessages('tipoDireccionID', myBundle.EditLogisticaTipodireccionHelpText_tipoDireccionID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{logisticaTipodireccionController.selected.nombre}" title="#{myBundle.EditLogisticaTipodireccionTitle_nombre}" required="true" requiredMessage="#{myBundle.EditLogisticaTipodireccionRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{logisticaTipodireccionController.getComponentMessages('nombre', myBundle.EditLogisticaTipodireccionHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{logisticaTipodireccionController.selected.descripcion}" title="#{myBundle.EditLogisticaTipodireccionTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{logisticaTipodireccionController.getComponentMessages('descripcion', myBundle.EditLogisticaTipodireccionHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_abreviacion}" for="abreviacion" />
+                        <h:panelGroup>
+                            <p:inputText id="abreviacion" value="#{logisticaTipodireccionController.selected.abreviacion}" title="#{myBundle.EditLogisticaTipodireccionTitle_abreviacion}" size="200" maxlength="200"/>
+                            <p:tooltip for="abreviacion" value="#{logisticaTipodireccionController.getComponentMessages('abreviacion', myBundle.EditLogisticaTipodireccionHelpText_abreviacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaTipodireccionController.selected.fechaCreacion}" title="#{myBundle.EditLogisticaTipodireccionTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditLogisticaTipodireccionRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{logisticaTipodireccionController.getComponentMessages('fechaCreacion', myBundle.EditLogisticaTipodireccionHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaTipodireccionController.selected.fechaModificacion}" title="#{myBundle.EditLogisticaTipodireccionTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{logisticaTipodireccionController.getComponentMessages('fechaModificacion', myBundle.EditLogisticaTipodireccionHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditLogisticaTipodireccionLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaTipodireccionController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaTipodireccionRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{logisticaTipodireccionController.getComponentMessages('estadoRegistro', myBundle.EditLogisticaTipodireccionHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logisticaTipodireccionController.save}" value="#{myBundle.Save}" update="display,:LogisticaTipodireccionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('LogisticaTipodireccionEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('LogisticaTipodireccionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

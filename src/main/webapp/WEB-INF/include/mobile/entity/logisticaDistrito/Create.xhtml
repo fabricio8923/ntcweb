@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="LogisticaDistritoCreatePage" lazy="true">
+        <pm:header title="#{myBundle.CreateLogisticaDistritoTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:LogisticaDistritoListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="LogisticaDistritoCreateForm">
+
+                <h:panelGroup id="display" rendered="#{logisticaDistritoController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_nombre}" for="nombre" />
+                            <p:inputText id="nombre" value="#{logisticaDistritoController.selected.nombre}" title="#{myBundle.CreateLogisticaDistritoTitle_nombre}" required="true" requiredMessage="#{myBundle.CreateLogisticaDistritoRequiredMessage_nombre}" size="100" maxlength="100"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_codigo}" for="codigo" />
+                            <p:inputText id="codigo" value="#{logisticaDistritoController.selected.codigo}" title="#{myBundle.CreateLogisticaDistritoTitle_codigo}" size="10" maxlength="10"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_codigoPostal}" for="codigoPostal" />
+                            <p:inputText id="codigoPostal" value="#{logisticaDistritoController.selected.codigoPostal}" title="#{myBundle.CreateLogisticaDistritoTitle_codigoPostal}" size="8" maxlength="8"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_fechaCreacion}" for="fechaCreacion" />
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaDistritoController.selected.fechaCreacion}" title="#{myBundle.CreateLogisticaDistritoTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreateLogisticaDistritoRequiredMessage_fechaCreacion}" showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_fechaModificacion}" for="fechaModificacion" />
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{logisticaDistritoController.selected.fechaModificacion}" title="#{myBundle.CreateLogisticaDistritoTitle_fechaModificacion}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_estadoRegistro}" for="estadoRegistro" />
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaDistritoController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreateLogisticaDistritoRequiredMessage_estadoRegistro}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreateLogisticaDistritoLabel_provinciaID}" for="provinciaID" />
+                            <p:selectOneMenu id="provinciaID" value="#{logisticaDistritoController.selected.provinciaID}" required="true" requiredMessage="#{myBundle.CreateLogisticaDistritoRequiredMessage_provinciaID}" converter="logisticaProvinciaConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{logisticaProvinciaController.items}"
+                                               var="provinciaIDItem"
+                                               itemValue="#{provinciaIDItem}"
+                                               itemLabel="#{provinciaIDItem.provinciaID.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{logisticaDistritoController.saveNew}" value="#{myBundle.Save}" update="display,:LogisticaDistritoListPage:LogisticaDistritoListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:LogisticaDistritoListPage')}">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2017 1:23:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.primefaces.omega.modelo.PersonaDocumentoentidad" table="persona_documentoentidad" catalog="ntc" optimistic-lock="version">
+        <id name="documentoEntidadId" type="java.lang.Integer">
+            <column name="DocumentoEntidadID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="personaEntidadnegocio" class="org.primefaces.omega.modelo.PersonaEntidadnegocio" fetch="select">
+            <column name="EntidadNegocioID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personaTipodocumento" class="org.primefaces.omega.modelo.PersonaTipodocumento" fetch="select">
+            <column name="TipoDocumentoID" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" not-null="true" />
+        </property>
+        <property name="observaion" type="string">
+            <column name="Observaion" length="300" not-null="true" />
+        </property>
+        <property name="ruta" type="string">
+            <column name="Ruta" length="200" not-null="true" />
+        </property>
+        <property name="extension" type="string">
+            <column name="Extension" length="6" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="FechaModificacion" length="19" />
+        </property>
+        <property name="estadoRegistro" type="boolean">
+            <column name="EstadoRegistro" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

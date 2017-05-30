@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="PersonaDocumentoentidadEditDlg" widgetVar="PersonaDocumentoentidadEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditPersonaDocumentoentidadTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaDocumentoentidadEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{personaDocumentoentidadController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_documentoEntidadID}" for="documentoEntidadID" />
+                        <h:panelGroup>
+                            <h:outputText id="documentoEntidadID" value="#{personaDocumentoentidadController.selected.documentoEntidadID}" />
+                            <p:tooltip for="documentoEntidadID" value="#{personaDocumentoentidadController.getComponentMessages('documentoEntidadID', myBundle.EditPersonaDocumentoentidadHelpText_documentoEntidadID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{personaDocumentoentidadController.selected.nombre}" title="#{myBundle.EditPersonaDocumentoentidadTitle_nombre}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_nombre}" size="100" maxlength="100"/>
+                            <p:tooltip for="nombre" value="#{personaDocumentoentidadController.getComponentMessages('nombre', myBundle.EditPersonaDocumentoentidadHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{personaDocumentoentidadController.selected.descripcion}" title="#{myBundle.EditPersonaDocumentoentidadTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{personaDocumentoentidadController.getComponentMessages('descripcion', myBundle.EditPersonaDocumentoentidadHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_observaion}" for="observaion" />
+                        <h:panelGroup>
+                            <p:inputTextarea rows="4" cols="30" id="observaion" value="#{personaDocumentoentidadController.selected.observaion}" title="#{myBundle.EditPersonaDocumentoentidadTitle_observaion}" />
+                            <p:tooltip for="observaion" value="#{personaDocumentoentidadController.getComponentMessages('observaion', myBundle.EditPersonaDocumentoentidadHelpText_observaion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_ruta}" for="ruta" />
+                        <h:panelGroup>
+                            <p:inputText id="ruta" value="#{personaDocumentoentidadController.selected.ruta}" title="#{myBundle.EditPersonaDocumentoentidadTitle_ruta}" size="200" maxlength="200"/>
+                            <p:tooltip for="ruta" value="#{personaDocumentoentidadController.getComponentMessages('ruta', myBundle.EditPersonaDocumentoentidadHelpText_ruta)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_extension}" for="extension" />
+                        <h:panelGroup>
+                            <p:inputText id="extension" value="#{personaDocumentoentidadController.selected.extension}" title="#{myBundle.EditPersonaDocumentoentidadTitle_extension}" size="6" maxlength="6"/>
+                            <p:tooltip for="extension" value="#{personaDocumentoentidadController.getComponentMessages('extension', myBundle.EditPersonaDocumentoentidadHelpText_extension)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaDocumentoentidadController.selected.fechaCreacion}" title="#{myBundle.EditPersonaDocumentoentidadTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{personaDocumentoentidadController.getComponentMessages('fechaCreacion', myBundle.EditPersonaDocumentoentidadHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaDocumentoentidadController.selected.fechaModificacion}" title="#{myBundle.EditPersonaDocumentoentidadTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{personaDocumentoentidadController.getComponentMessages('fechaModificacion', myBundle.EditPersonaDocumentoentidadHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaDocumentoentidadController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{personaDocumentoentidadController.getComponentMessages('estadoRegistro', myBundle.EditPersonaDocumentoentidadHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_entidadNegocioID}" for="entidadNegocioID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="entidadNegocioID" value="#{personaDocumentoentidadController.selected.entidadNegocioID}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_entidadNegocioID}" converter="personaEntidadnegocioConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{personaEntidadnegocioController.items}"
+                                               var="entidadNegocioIDItem"
+                                               itemValue="#{entidadNegocioIDItem}"
+                                               itemLabel="#{entidadNegocioIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="entidadNegocioID" value="#{personaDocumentoentidadController.getComponentMessages('entidadNegocioID', myBundle.EditPersonaDocumentoentidadHelpText_entidadNegocioID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.EditPersonaDocumentoentidadLabel_tipoDocumentoID}" for="tipoDocumentoID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="tipoDocumentoID" value="#{personaDocumentoentidadController.selected.tipoDocumentoID}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_tipoDocumentoID}" converter="personaTipodocumentoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{personaTipodocumentoController.items}"
+                                               var="tipoDocumentoIDItem"
+                                               itemValue="#{tipoDocumentoIDItem}"
+                                               itemLabel="#{tipoDocumentoIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="tipoDocumentoID" value="#{personaDocumentoentidadController.getComponentMessages('tipoDocumentoID', myBundle.EditPersonaDocumentoentidadHelpText_tipoDocumentoID)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaDocumentoentidadController.save}" value="#{myBundle.Save}" update="display,:PersonaDocumentoentidadListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PersonaDocumentoentidadEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PersonaDocumentoentidadEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

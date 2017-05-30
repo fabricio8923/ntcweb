@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="PersonaTipodocumentoListForm">
+
+        <p:panel header="#{myBundle.ListPersonaTipodocumentoTitle}">
+            <p:contextMenu id="PersonaTipodocumentoDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('PersonaTipodocumentoListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('PersonaTipodocumentoListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('PersonaTipodocumentoListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('PersonaTipodocumentoListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.PersonaTipodocumentoMenuItem_personaDocumentoentidadCollection}" icon="ui-icon-search"  action="#{personaTipodocumentoController.navigatePersonaDocumentoentidadCollection}" disabled="#{personaTipodocumentoController.isPersonaDocumentoentidadCollectionEmpty}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{personaTipodocumentoController.lazyItems}"
+                         lazy="true"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{personaTipodocumentoController.selected}"
+                         filteredValue="#{personaTipodocumentoController.filteredItems}">
+                <!--
+                         To disable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{personaTipodocumentoController.items}"
+                         lazy="false"
+                         rowKey="HASH{item.tipoDocumentoID}"
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PersonaTipodocumentoDataTableContextMenu"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PersonaTipodocumentoDataTableContextMenu"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('PersonaTipodocumentoListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.tipoDocumentoID}" filterBy="#{item.tipoDocumentoID}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_tipoDocumentoID}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipoDocumentoID}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.descripcion}" filterBy="#{item.descripcion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_descripcion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.descripcion}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.abreviacion}" filterBy="#{item.abreviacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_abreviacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.abreviacion}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_fechaCreacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_fechaModificacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonaTipodocumentoTitle_estadoRegistro}"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditPersonaTipodocumentoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaTipodocumentoRequiredMessage_estadoRegistro}" disabled="true"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{personaTipodocumentoController.prepareCreate}" update=":PersonaTipodocumentoCreateForm" oncomplete="PF('PersonaTipodocumentoCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":PersonaTipodocumentoViewForm" oncomplete="PF('PersonaTipodocumentoViewDialog').show()" disabled="#{empty personaTipodocumentoController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":PersonaTipodocumentoEditForm" oncomplete="PF('PersonaTipodocumentoEditDialog').show()" disabled="#{empty personaTipodocumentoController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{personaTipodocumentoController.delete}" update=":growl,datalist" disabled="#{empty personaTipodocumentoController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

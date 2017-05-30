@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaPaisViewDlg" widgetVar="LogisticaPaisViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewLogisticaPaisTitle}" responsive="true" closeOnEscape="true">
+
+            <h:form id="LogisticaPaisViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{logisticaPaisController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_paisID}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.paisID}" title="#{myBundle.ViewLogisticaPaisTitle_paisID}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_nombre}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.nombre}" title="#{myBundle.ViewLogisticaPaisTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_codigoISO}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.codigoISO}" title="#{myBundle.ViewLogisticaPaisTitle_codigoISO}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_moneda}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.moneda}" title="#{myBundle.ViewLogisticaPaisTitle_moneda}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_zonaHoraria}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.zonaHoraria}" title="#{myBundle.ViewLogisticaPaisTitle_zonaHoraria}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_codigoPostal}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.codigoPostal}" title="#{myBundle.ViewLogisticaPaisTitle_codigoPostal}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_inmutable}"/>
+                        <h:selectBooleanCheckbox id="inmutable" value="#{logisticaPaisController.selected.inmutable}" title="#{myBundle.EditLogisticaPaisTitle_inmutable}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_inmutable}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_fechaCreacion}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaPaisTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_fechaModificacion}"/>
+                        <h:outputText value="#{logisticaPaisController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaPaisTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaPaisController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaPaisTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('LogisticaPaisViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

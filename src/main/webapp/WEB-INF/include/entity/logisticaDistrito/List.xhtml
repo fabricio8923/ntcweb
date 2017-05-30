@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="LogisticaDistritoListForm">
+
+        <p:panel header="#{myBundle.ListLogisticaDistritoTitle}">
+            <p:contextMenu id="LogisticaDistritoDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('LogisticaDistritoListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('LogisticaDistritoListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('LogisticaDistritoListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('LogisticaDistritoListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.LogisticaDistritoMenuItem_provinciaID}" icon="ui-icon-search"  actionListener="#{logisticaDistritoController.prepareProvinciaID}" update=":LogisticaProvinciaViewForm" oncomplete="PF('LogisticaProvinciaViewDialog').show()" disabled="#{empty logisticaDistritoController.selected.provinciaID}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{logisticaDistritoController.items}"
+                         lazy="false"
+                         rowKey="#{item.distritoID}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{logisticaDistritoController.selected}"
+                         filteredValue="#{logisticaDistritoController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{logisticaDistritoController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.distritoID}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:LogisticaDistritoDataTableContextMenu" listener="#{logisticaDistritoController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:LogisticaDistritoDataTableContextMenu" listener="#{logisticaDistritoController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{logisticaDistritoController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('LogisticaDistritoListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.distritoID}" filterBy="#{item.distritoID}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_distritoID}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.distritoID}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.codigo}" filterBy="#{item.codigo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_codigo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codigo}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.codigoPostal}" filterBy="#{item.codigoPostal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_codigoPostal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codigoPostal}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fechaCreacion}" filterBy="#{item.fechaCreacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_fechaCreacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fechaModificacion}" filterBy="#{item.fechaModificacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_fechaModificacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+
+                <ui:remove>
+                    <p:column sortBy="#{item.estadoRegistro}" filterBy="#{item.estadoRegistro}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_estadoRegistro}"/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{item.estadoRegistro}" title="#{myBundle.EditLogisticaDistritoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaDistritoRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:column>
+                </ui:remove>
+                <ui:remove>
+                    <p:column sortBy="#{item.provinciaID.provinciaID}" filterBy="#{item.provinciaID.provinciaID}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListLogisticaDistritoTitle_provinciaID}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.provinciaID.provinciaID}"/>
+                    </p:column>
+                </ui:remove>
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{logisticaDistritoController.prepareCreate}" update=":LogisticaDistritoCreateForm" oncomplete="PF('LogisticaDistritoCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":LogisticaDistritoViewForm" oncomplete="PF('LogisticaDistritoViewDialog').show()" disabled="#{empty logisticaDistritoController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":LogisticaDistritoEditForm" oncomplete="PF('LogisticaDistritoEditDialog').show()" disabled="#{empty logisticaDistritoController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{logisticaDistritoController.delete}" update=":growl,datalist" disabled="#{empty logisticaDistritoController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

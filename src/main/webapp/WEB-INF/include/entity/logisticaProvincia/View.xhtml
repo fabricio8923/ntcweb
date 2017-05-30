@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogisticaProvinciaViewDlg" widgetVar="LogisticaProvinciaViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewLogisticaProvinciaTitle}" closeOnEscape="true">
+
+            <h:form id="LogisticaProvinciaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{logisticaProvinciaController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_provinciaID}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.provinciaID}" title="#{myBundle.ViewLogisticaProvinciaTitle_provinciaID}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_nombre}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.nombre}" title="#{myBundle.ViewLogisticaProvinciaTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_codigo}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.codigo}" title="#{myBundle.ViewLogisticaProvinciaTitle_codigo}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_codigoPostal}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.codigoPostal}" title="#{myBundle.ViewLogisticaProvinciaTitle_codigoPostal}"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_fechaCreacion}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaProvinciaTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_fechaModificacion}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaProvinciaTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaProvinciaController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaProvinciaTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaProvinciaRequiredMessage_estadoRegistro}" disabled="true"/>
+
+                        <h:outputText value="#{myBundle.ViewLogisticaProvinciaLabel_departamentoID}"/>
+                        <h:outputText value="#{logisticaProvinciaController.selected.departamentoID.departamentoID}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('LogisticaProvinciaViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

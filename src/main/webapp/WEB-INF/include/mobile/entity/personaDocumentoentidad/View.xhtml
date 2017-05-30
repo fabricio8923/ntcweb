@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaDocumentoentidadViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewPersonaDocumentoentidadTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaDocumentoentidadListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaDocumentoentidadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{personaDocumentoentidadController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_documentoEntidadID}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.documentoEntidadID}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_documentoEntidadID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_nombre}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.nombre}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_descripcion}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.descripcion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_observaion}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.observaion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_observaion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_ruta}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.ruta}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_ruta}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_extension}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.extension}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_extension}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_fechaCreacion}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_fechaModificacion}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaDocumentoentidadTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaDocumentoentidadController.selected.estadoRegistro}" title="#{myBundle.EditPersonaDocumentoentidadTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaDocumentoentidadRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_entidadNegocioID}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.entidadNegocioID.descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaDocumentoentidadLabel_tipoDocumentoID}"/>
+                            <h:outputText value="#{personaDocumentoentidadController.selected.tipoDocumentoID.descripcion}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

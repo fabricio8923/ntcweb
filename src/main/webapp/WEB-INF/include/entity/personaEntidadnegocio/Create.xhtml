@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaEntidadnegocioCreateDlg" widgetVar="PersonaEntidadnegocioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreatePersonaEntidadnegocioTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaEntidadnegocioCreateForm">
+
+                <h:panelGroup id="display" rendered="#{personaEntidadnegocioController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_nombre}" for="nombre" />
+                        <h:panelGroup>
+                            <p:inputText id="nombre" value="#{personaEntidadnegocioController.selected.nombre}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_nombre}" required="true" requiredMessage="#{myBundle.CreatePersonaEntidadnegocioRequiredMessage_nombre}" size="150" maxlength="150"/>
+                            <p:tooltip for="nombre" value="#{personaEntidadnegocioController.getComponentMessages('nombre', myBundle.CreatePersonaEntidadnegocioHelpText_nombre)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_descripcion}" for="descripcion" />
+                        <h:panelGroup>
+                            <p:inputText id="descripcion" value="#{personaEntidadnegocioController.selected.descripcion}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_descripcion}" size="100" maxlength="100"/>
+                            <p:tooltip for="descripcion" value="#{personaEntidadnegocioController.getComponentMessages('descripcion', myBundle.CreatePersonaEntidadnegocioHelpText_descripcion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_abreviacion}" for="abreviacion" />
+                        <h:panelGroup>
+                            <p:inputText id="abreviacion" value="#{personaEntidadnegocioController.selected.abreviacion}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_abreviacion}" size="200" maxlength="200"/>
+                            <p:tooltip for="abreviacion" value="#{personaEntidadnegocioController.getComponentMessages('abreviacion', myBundle.CreatePersonaEntidadnegocioHelpText_abreviacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaEntidadnegocioController.selected.fechaNacimiento}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_fechaNacimiento}" required="true" requiredMessage="#{myBundle.CreatePersonaEntidadnegocioRequiredMessage_fechaNacimiento}" showOn="button"/>
+                            <p:tooltip for="fechaNacimiento" value="#{personaEntidadnegocioController.getComponentMessages('fechaNacimiento', myBundle.CreatePersonaEntidadnegocioHelpText_fechaNacimiento)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_fechaCese}" for="fechaCese" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCese" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaEntidadnegocioController.selected.fechaCese}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_fechaCese}"  showOn="button"/>
+                            <p:tooltip for="fechaCese" value="#{personaEntidadnegocioController.getComponentMessages('fechaCese', myBundle.CreatePersonaEntidadnegocioHelpText_fechaCese)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_fechaCreacion}" for="fechaCreacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaEntidadnegocioController.selected.fechaCreacion}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_fechaCreacion}" required="true" requiredMessage="#{myBundle.CreatePersonaEntidadnegocioRequiredMessage_fechaCreacion}" showOn="button"/>
+                            <p:tooltip for="fechaCreacion" value="#{personaEntidadnegocioController.getComponentMessages('fechaCreacion', myBundle.CreatePersonaEntidadnegocioHelpText_fechaCreacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_fechaModificacion}" for="fechaModificacion" />
+                        <h:panelGroup>
+                            <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personaEntidadnegocioController.selected.fechaModificacion}" title="#{myBundle.CreatePersonaEntidadnegocioTitle_fechaModificacion}"  showOn="button"/>
+                            <p:tooltip for="fechaModificacion" value="#{personaEntidadnegocioController.getComponentMessages('fechaModificacion', myBundle.CreatePersonaEntidadnegocioHelpText_fechaModificacion)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_estadoRegistro}" for="estadoRegistro" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="estadoRegistro" value="#{personaEntidadnegocioController.selected.estadoRegistro}" required="true" requiredMessage="#{myBundle.CreatePersonaEntidadnegocioRequiredMessage_estadoRegistro}"/>
+                            <p:tooltip for="estadoRegistro" value="#{personaEntidadnegocioController.getComponentMessages('estadoRegistro', myBundle.CreatePersonaEntidadnegocioHelpText_estadoRegistro)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_tipoEntidadID}" for="tipoEntidadID" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="tipoEntidadID" value="#{personaEntidadnegocioController.selected.tipoEntidadID}" required="true" requiredMessage="#{myBundle.CreatePersonaEntidadnegocioRequiredMessage_tipoEntidadID}" converter="personaTipoentidadConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{personaTipoentidadController.items}"
+                                               var="tipoEntidadIDItem"
+                                               itemValue="#{tipoEntidadIDItem}"
+                                               itemLabel="#{tipoEntidadIDItem.descripcion.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="tipoEntidadID" value="#{personaEntidadnegocioController.getComponentMessages('tipoEntidadID', myBundle.CreatePersonaEntidadnegocioHelpText_tipoEntidadID)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{myBundle.CreatePersonaEntidadnegocioLabel_personaPersona}" for="personaPersona" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="personaPersona" value="#{personaEntidadnegocioController.selected.personaPersona}"  converter="personaPersonaConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{personaPersonaController.items}"
+                                               var="personaPersonaItem"
+                                               itemValue="#{personaPersonaItem}"
+                                               itemLabel="#{personaPersonaItem.entidadNegocioID.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="personaPersona" value="#{personaEntidadnegocioController.getComponentMessages('personaPersona', myBundle.CreatePersonaEntidadnegocioHelpText_personaPersona)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaEntidadnegocioController.saveNew}" value="#{myBundle.Save}" update="display,:PersonaEntidadnegocioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PersonaEntidadnegocioCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PersonaEntidadnegocioCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

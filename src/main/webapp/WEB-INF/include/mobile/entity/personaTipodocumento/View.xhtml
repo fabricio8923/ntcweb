@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PersonaTipodocumentoViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewPersonaTipodocumentoTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PersonaTipodocumentoListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PersonaTipodocumentoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{personaTipodocumentoController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_tipoDocumentoID}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.tipoDocumentoID}" title="#{myBundle.ViewPersonaTipodocumentoTitle_tipoDocumentoID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_nombre}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.nombre}" title="#{myBundle.ViewPersonaTipodocumentoTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_descripcion}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.descripcion}" title="#{myBundle.ViewPersonaTipodocumentoTitle_descripcion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_abreviacion}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.abreviacion}" title="#{myBundle.ViewPersonaTipodocumentoTitle_abreviacion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_fechaCreacion}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaTipodocumentoTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_fechaModificacion}"/>
+                            <h:outputText value="#{personaTipodocumentoController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaTipodocumentoTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewPersonaTipodocumentoLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaTipodocumentoController.selected.estadoRegistro}" title="#{myBundle.EditPersonaTipodocumentoTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaTipodocumentoRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

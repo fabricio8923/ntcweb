@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--
+DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+Copyright (c) 2008, 2016 Oracle and/or its affiliates. All rights reserved.
+
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+The contents of this file are subject to the terms of either the GNU
+General Public License Version 2 only ("GPL") or the Common
+Development and Distribution License("CDDL") (collectively, the
+"License"). You may not use this file except in compliance with the
+License. You can obtain a copy of the License at
+http://www.netbeans.org/cddl-gplv2.html
+or nbbuild/licenses/CDDL-GPL-2-CP. See the License for the
+specific language governing permissions and limitations under the
+License.  When distributing the software, include this License Header
+Notice in each file and include the License file at
+nbbuild/licenses/CDDL-GPL-2-CP.  Oracle designates this
+particular file as subject to the "Classpath" exception as provided
+by Oracle in the GPL Version 2 section of the License file that
+accompanied this code. If applicable, add the following below the
+License Header, with the fields enclosed by brackets [] replaced by
+your own identifying information:
+"Portions Copyrighted [year] [name of copyright owner]"
+
+If you wish your version of this file to be governed by only the CDDL
+or only the GPL Version 2, indicate your decision by adding
+"[Contributor] elects to include this software in this distribution
+under the [CDDL or GPL Version 2] license." If you do not indicate a
+single choice of license, a recipient has the option to distribute
+your version of this file under either the CDDL, the GPL Version 2 or
+to extend the choice of license to its licensees as provided above.
+However, if you add GPL Version 2 code and therefore, elected the GPL
+Version 2 license, then the option applies only if the new code is
+made subject to such option by the copyright holder.
+
+Contributor(s):
+-->
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ntc?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="org/primefaces/omega/modelo/PersonaEstadocivil.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoTipoatributo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoAtributo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/GeneralEstado.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaEntidadnegocio.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionOrdenservicio.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionTrabajador.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionServicio.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoRelacionproducto.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoSerie.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaPais.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoAplicacion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/GeneralUnidadmedida.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/GeneralCategoriaactividad.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaDepartamento.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionTipoorganizacion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaPersona.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoTipoproducto.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoProducto.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaProvincia.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionOrganizacion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoActivo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaRuta.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaTipoentidad.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaDistrito.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaDocumentoentidad.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaTipodocumento.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionGiro.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoProductoatributo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoResponsableactivo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionDetordenservicio.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionProveedor.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/PersonaDireccionentidad.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoModelo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaLocacion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionDetordentrabajo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaUsodireccion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionRazonsocial.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/GeneralMotivoactividad.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoMarca.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoCategoria.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionOrdentrabajo.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/OrganizacionCliente.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoTiporelacion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/LogisticaTipodireccion.hbm.xml"/>
+    <mapping resource="org/primefaces/omega/modelo/ProductoInventario.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

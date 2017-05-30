@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaTipoentidadViewDlg" widgetVar="PersonaTipoentidadViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPersonaTipoentidadTitle}" closeOnEscape="true">
+
+            <h:form id="PersonaTipoentidadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personaTipoentidadController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_tipoEntidadID}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.tipoEntidadID}" title="#{myBundle.ViewPersonaTipoentidadTitle_tipoEntidadID}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_nombre}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.nombre}" title="#{myBundle.ViewPersonaTipoentidadTitle_nombre}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_descripcion}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.descripcion}" title="#{myBundle.ViewPersonaTipoentidadTitle_descripcion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_abreviacion}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.abreviacion}" title="#{myBundle.ViewPersonaTipoentidadTitle_abreviacion}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.fechaCreacion}" title="#{myBundle.ViewPersonaTipoentidadTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personaTipoentidadController.selected.fechaModificacion}" title="#{myBundle.ViewPersonaTipoentidadTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPersonaTipoentidadLabel_estadoRegistro}"/>
+                        <h:selectBooleanCheckbox id="estadoRegistro" value="#{personaTipoentidadController.selected.estadoRegistro}" title="#{myBundle.EditPersonaTipoentidadTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditPersonaTipoentidadRequiredMessage_estadoRegistro}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PersonaTipoentidadViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

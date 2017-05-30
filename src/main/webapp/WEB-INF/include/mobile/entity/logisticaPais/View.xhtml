@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="LogisticaPaisViewPage" lazy="true">
+        <pm:header title="#{myBundle.ViewLogisticaPaisTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:LogisticaPaisListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="LogisticaPaisViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{logisticaPaisController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_paisID}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.paisID}" title="#{myBundle.ViewLogisticaPaisTitle_paisID}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_nombre}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.nombre}" title="#{myBundle.ViewLogisticaPaisTitle_nombre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_codigoISO}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.codigoISO}" title="#{myBundle.ViewLogisticaPaisTitle_codigoISO}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_moneda}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.moneda}" title="#{myBundle.ViewLogisticaPaisTitle_moneda}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_zonaHoraria}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.zonaHoraria}" title="#{myBundle.ViewLogisticaPaisTitle_zonaHoraria}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_codigoPostal}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.codigoPostal}" title="#{myBundle.ViewLogisticaPaisTitle_codigoPostal}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_inmutable}"/>
+                            <h:selectBooleanCheckbox id="inmutable" value="#{logisticaPaisController.selected.inmutable}" title="#{myBundle.EditLogisticaPaisTitle_inmutable}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_inmutable}" disabled="true"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_fechaCreacion}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.fechaCreacion}" title="#{myBundle.ViewLogisticaPaisTitle_fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_fechaModificacion}"/>
+                            <h:outputText value="#{logisticaPaisController.selected.fechaModificacion}" title="#{myBundle.ViewLogisticaPaisTitle_fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewLogisticaPaisLabel_estadoRegistro}"/>
+                            <h:selectBooleanCheckbox id="estadoRegistro" value="#{logisticaPaisController.selected.estadoRegistro}" title="#{myBundle.EditLogisticaPaisTitle_estadoRegistro}" required="true" requiredMessage="#{myBundle.EditLogisticaPaisRequiredMessage_estadoRegistro}" disabled="true"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>
