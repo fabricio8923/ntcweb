@@ -15,5 +15,5 @@ import org.primefaces.omega.modelo.GeneralCategoriaactividad;
  */
 public class GeneralCategoriaactividadDaoImplements {
 
-    
+    public int valor;
 }
