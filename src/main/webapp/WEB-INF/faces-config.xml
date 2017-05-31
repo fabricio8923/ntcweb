@@ -23,7 +23,7 @@
             <base-name>/MyBundle</base-name>
             <var>myBundle</var>
         </resource-bundle>
-        <navigation-handler>org.primefaces.mobile.application.MobileNavigationHandler</navigation-handler>
+       
         <resource-bundle>
             <base-name>/MyBundle</base-name>
             <var>myBundle</var>
@@ -44,46 +44,5 @@
             <to-view-id>/welcomeJSF.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>logisticaPais</managed-bean-name>
-        <managed-bean-class>org.primefaces.omega.jsfclasses.LogisticaPaisController</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>logisticaPaisJpa</managed-bean-name>
-        <managed-bean-class>org.primefaces.omega.sessionbean.LogisticaPaisFacade</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <converter>
-        <converter-for-class>org.primefaces.omega.entidades.LogisticaPais</converter-for-class>
-        <converter-class>org.primefaces.omega.jsfclasses.LogisticaPaisConverter</converter-class>
-    </converter>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>logisticaPais_create</from-outcome>
-            <to-view-id>/LogisticaPais/logisticaPais/New.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>logisticaPais_list</from-outcome>
-            <to-view-id>/LogisticaPais/logisticaPais/List.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>logisticaPais_edit</from-outcome>
-            <to-view-id>/LogisticaPais/logisticaPais/Edit.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>logisticaPais_detail</from-outcome>
-            <to-view-id>/LogisticaPais/logisticaPais/Detail.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    
 </faces-config>
