@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Insertar Persona" rendered="#{empty PersonaBean.selectedPersona != null }">
+                <p:panelGrid columns="2">
+                <p:outputLabel value="Nombre : "/>
+                <p:inputText value="#{PersonaBean.selectedPersona.nombre}"/>
+                <p:outputLabel value="Primer Apellido: "/>
+                <p:inputText value="#{PersonaBean.selectedPersona.primerApellido}"/>
+                <p:outputLabel value="Segundo Apellido: "/>
+                <p:inputText value="#{PersonaBean.selectedPersona.segundoApellido}"/>
+                <p:outputLabel value="Estado Civil: "/>
+                <p:inputText value="#{PersonaBean.selectedPersona.personaEstadocivil.estadoCivilId}"/>
+                <p:outputLabel value="Sexo: "/>
+                <p:inputText value="#{PersonaBean.selectedPersona.sexo}"/>
+                <p:outputLabel value="Fecha de Nacimiento: "/>
+                <p:calendar value="#{PersonaBean.selectEntidadnegocio.fechaNacimiento}" />
+                <!--p:inputText value=""/-->
+                </p:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton value="Insertar" actionListener="#{PersonaBean.InsertarEntidadyPersona(evt)}"/>
+                </f:facet>
+
+
+            </p:panel>
+        </h:form>
+        Hello from Facelets
+    </h:body>
+</html>
+
