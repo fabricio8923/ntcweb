@@ -30,7 +30,7 @@ public class ProductoActivoControlador {
     }
 
     public List<ProductoActivo> getProductoactivo() {
-        return productoactivo;
+        return productoactivo = objProductoActivoDao.LoadTablaProductoActivos();
     }
 
     public ProductoActivo getSelectedproductoactivo() {
@@ -39,6 +39,15 @@ public class ProductoActivoControlador {
 
     public void setSelectedproductoactivo(ProductoActivo selectedproductoactivo) {
         this.selectedproductoactivo = selectedproductoactivo;
+    }
+    public void InsertarProductoActivo(){
+    objProductoActivoDao.InsertarProductoActivo(selectedproductoactivo);
+    }
+    public void ActualizarProductoActivo(){
+    objProductoActivoDao.ActualizarProductoActivo(selectedproductoactivo);
+    }
+    public void EliminarProductoActivo(){
+    objProductoActivoDao.EliminarProductoActivo(selectedproductoactivo);
     }
    
 

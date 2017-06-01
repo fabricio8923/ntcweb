@@ -30,7 +30,7 @@ public class PersonaTipodocumentoControlador {
     }
 
     public List<PersonaTipodocumento> getPersonatipodocumento() {
-        return personatipodocumento;
+        return personatipodocumento = objPersonaTipodocumentoDao.LoadTablaPersonaTipodocumentos();
     }
 
     public PersonaTipodocumento getSelectedpersonatipodocumento() {
@@ -41,6 +41,15 @@ public class PersonaTipodocumentoControlador {
         this.selectedpersonatipodocumento = selectedpersonatipodocumento;
     }
    
-
+    public void InsertarPersonaTipodocumento(){
+    objPersonaTipodocumentoDao.InsertarPersonaTipodocumento(selectedpersonatipodocumento);
+    }
+    public void ActualizarPersonaTipodocumento(){
+    objPersonaTipodocumentoDao.ActualizarPersonaTipodocumento(selectedpersonatipodocumento);
+    }
+    public void EliminarPersonaTipodocumento(){
+    objPersonaTipodocumentoDao.EliminarPersonaTipodocumento(selectedpersonatipodocumento);
+    }
+   
     
 }

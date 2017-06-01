@@ -30,7 +30,7 @@ public class ProductoProductoatributoControlador {
     }
 
     public List<ProductoProductoatributo> getProductoproductoatributo() {
-        return productoproductoatributo;
+        return productoproductoatributo = objProductoProductoatributoDao.LoadTablaProductoProductoatributos();
     }
 
     public ProductoProductoatributo getSelectedproductoproductoatributo() {
@@ -40,5 +40,13 @@ public class ProductoProductoatributoControlador {
     public void setSelectedproductoproductoatributo(ProductoProductoatributo selectedproductoproductoatributo) {
         this.selectedproductoproductoatributo = selectedproductoproductoatributo;
     }
- 
+    public void InsertarProductoProductoatributo(){
+    objProductoProductoatributoDao.InsertarProductoProductoatributo(selectedproductoproductoatributo);
+    }
+    public void ActualizarProductoProductoatributo(){
+    objProductoProductoatributoDao.ActualizarProductoProductoatributo(selectedproductoproductoatributo);
+    }
+    public void EliminarProductoProductoatributo(){
+    objProductoProductoatributoDao.EliminarProductoProductoatributo(selectedproductoproductoatributo);
+    }
 }

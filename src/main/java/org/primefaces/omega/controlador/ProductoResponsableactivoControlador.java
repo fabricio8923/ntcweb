@@ -30,7 +30,7 @@ public class ProductoResponsableactivoControlador {
     }
 
     public List<ProductoResponsableactivo> getProductoresponsableactivo() {
-        return productoresponsableactivo;
+        return productoresponsableactivo = objProductoResponsableactivoDao.LoadTablaProductoResponsableactivos();
     }
 
     public ProductoResponsableactivo getSelectedproductoresponsableactivo() {
@@ -40,5 +40,13 @@ public class ProductoResponsableactivoControlador {
     public void setSelectedproductoresponsableactivo(ProductoResponsableactivo selectedproductoresponsableactivo) {
         this.selectedproductoresponsableactivo = selectedproductoresponsableactivo;
     }
-  
+    public void InsertarProductoResponsableactivo(){
+    objProductoResponsableactivoDao.InsertarProductoResponsableactivo(selectedproductoresponsableactivo);
+    }
+    public void ActualizarProductoResponsableactivo(){
+    objProductoResponsableactivoDao.ActualizarProductoResponsableactivo(selectedproductoresponsableactivo);
+    }
+    public void EliminarProductoResponsableactivo(){
+    objProductoResponsableactivoDao.EliminarProductoResponsableactivo(selectedproductoresponsableactivo);
+    }
 }

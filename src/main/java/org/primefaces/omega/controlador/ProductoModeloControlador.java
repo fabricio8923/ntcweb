@@ -30,7 +30,7 @@ public class ProductoModeloControlador {
     }
 
     public List<ProductoModelo> getProductomodelo() {
-        return productomodelo;
+        return productomodelo = objProductoModeloDao.LoadTablaProductoModelos();
     }
 
     public ProductoModelo getSelectedproductomodelo() {
@@ -40,5 +40,13 @@ public class ProductoModeloControlador {
     public void setSelectedproductomodelo(ProductoModelo selectedproductomodelo) {
         this.selectedproductomodelo = selectedproductomodelo;
     }
-   
+    public void InsertarProductoModelo(){
+    objProductoModeloDao.InsertarProductoModelo(selectedproductomodelo);
+    }
+    public void ActualizarProductoModelo(){
+    objProductoModeloDao.ActualizarProductoModelo(selectedproductomodelo);
+    }
+    public void EliminarProductoModelo(){
+    objProductoModeloDao.EliminarProductoModelo(selectedproductomodelo);
+    }
 }

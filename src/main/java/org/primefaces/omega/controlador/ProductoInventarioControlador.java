@@ -30,7 +30,7 @@ public class ProductoInventarioControlador {
     }
 
     public List<ProductoInventario> getProductoinventario() {
-        return productoinventario;
+        return productoinventario = objProductoInventarioDao.LoadTablaProductoInventarios();
     }
 
     public ProductoInventario getSelectedproductoinventario() {
@@ -40,6 +40,14 @@ public class ProductoInventarioControlador {
     public void setSelectedproductoinventario(ProductoInventario selectedproductoinventario) {
         this.selectedproductoinventario = selectedproductoinventario;
     }
-
+    public void InsertarProductoInventario(){
+    objProductoInventarioDao.InsertarProductoInventario(selectedproductoinventario);
+    }
+    public void ActualizarProductoInventario(){
+    objProductoInventarioDao.ActualizarProductoInventario(selectedproductoinventario);
+    }
+    public void EliminarProductoInventario(){
+    objProductoInventarioDao.EliminarProductoInventario(selectedproductoinventario);
+    }
   
 }

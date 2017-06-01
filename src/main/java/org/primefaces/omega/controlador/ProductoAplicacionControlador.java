@@ -30,7 +30,7 @@ public class ProductoAplicacionControlador {
     }
 
     public List<ProductoAplicacion> getProductoaplicacion() {
-        return productoaplicacion;
+        return productoaplicacion = objProductoAplicacionDao.LoadTablaProductoAplicaciones();
     }
 
     public ProductoAplicacion getSelectedproductoaplicacion() {
@@ -40,6 +40,14 @@ public class ProductoAplicacionControlador {
     public void setSelectedproductoaplicacion(ProductoAplicacion selectedproductoaplicacion) {
         this.selectedproductoaplicacion = selectedproductoaplicacion;
     }
-   
+    public void InsertarProductoAplicacion(){
+    objProductoAplicacionDao.InsertarProductoAplicacion(selectedproductoaplicacion);
+    }
+    public void ActualizarProductoAplicacion(){
+    objProductoAplicacionDao.ActualizarProductoAplicacion(selectedproductoaplicacion);
+    }
+    public void EliminarProductoAplicacion(){
+    objProductoAplicacionDao.EliminarProductoAplicacion(selectedproductoaplicacion);
+    }
    
 }

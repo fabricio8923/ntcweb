@@ -30,7 +30,7 @@ public class PersonaEstadocivilControlador {
     }
 
     public List<PersonaEstadocivil> getPersonaestadocivil() {
-        return personaestadocivil;
+        return personaestadocivil = objPersonaEstadocivilDao.LoadTablaPersonaEstadociviles();
     }
 
     public PersonaEstadocivil getSelectedpersonaestadocivil() {
@@ -40,6 +40,14 @@ public class PersonaEstadocivilControlador {
     public void setSelectedpersonaestadocivil(PersonaEstadocivil selectedpersonaestadocivil) {
         this.selectedpersonaestadocivil = selectedpersonaestadocivil;
     }
-
+    public void InsertarPersonaEstadocivil(){
+    objPersonaEstadocivilDao.InsertarPersonaEstadocivil(selectedpersonaestadocivil);
+    }
+    public void ActualizarPersonaEstadocivil(){
+    objPersonaEstadocivilDao.ActualizarPersonaEstadocivil(selectedpersonaestadocivil);
+    }
+    public void EliminarPersonaEstadocivil(){
+    objPersonaEstadocivilDao.EliminarPersonaEstadocivil(selectedpersonaestadocivil);
+    }
   
 }

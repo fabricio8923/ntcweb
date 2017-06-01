@@ -30,7 +30,7 @@ public class ProductoMarcaControlador {
     }
 
     public List<ProductoMarca> getProductomarca() {
-        return productomarca;
+        return productomarca = objProductoMarcaDao.LoadTablaProductoMarcas();
     }
 
     public ProductoMarca getSelectedproductomarca() {
@@ -40,7 +40,15 @@ public class ProductoMarcaControlador {
     public void setSelectedproductomarca(ProductoMarca selectedproductomarca) {
         this.selectedproductomarca = selectedproductomarca;
     }
- 
+    public void InsertarProductoMarca(){
+    objProductoMarcaDao.InsertarProductoMarca(selectedproductomarca);
+    }
+    public void ActualizarProductoMarca(){
+    objProductoMarcaDao.ActualizarProductoMarca(selectedproductomarca);
+    }
+    public void EliminarProductoMarca(){
+    objProductoMarcaDao.EliminarProductoMarca(selectedproductomarca);
+    }
 
    
 }

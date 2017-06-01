@@ -30,7 +30,7 @@ public class ProductoTiporelacionControlador {
     }
 
     public List<ProductoTiporelacion> getProductotiporelacion() {
-        return productotiporelacion;
+        return productotiporelacion = objProductoTiporelacionDao.LoadTablaProductoTiporelaciones();
     }
 
     public ProductoTiporelacion getSelectedproductotiporelacion() {
@@ -39,6 +39,15 @@ public class ProductoTiporelacionControlador {
 
     public void setSelectedproductotiporelacion(ProductoTiporelacion selectedproductotiporelacion) {
         this.selectedproductotiporelacion = selectedproductotiporelacion;
+    }
+    public void InsertarProductoTiporelacion(){
+    objProductoTiporelacionDao.InsertarProductoTiporelacion(selectedproductotiporelacion);
+    }
+    public void ActualizarProductoTiporelacion(){
+    objProductoTiporelacionDao.ActualizarProductoTiporelacion(selectedproductotiporelacion);
+    }
+    public void EliminarProductoTiporelacion(){
+    objProductoTiporelacionDao.EliminarProductoTiporelacion(selectedproductotiporelacion);
     }
  
 }

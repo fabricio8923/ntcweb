@@ -30,7 +30,7 @@ public class PersonaTipoentidadControlador {
     }
 
     public List<PersonaTipoentidad> getPersonatipoentidad() {
-        return personatipoentidad;
+        return personatipoentidad = objPersonaTipoentidadDao.LoadTablaPersonaTipoentidades();
     }
 
     public PersonaTipoentidad getSelectedpersonatipoentidad() {
@@ -40,6 +40,14 @@ public class PersonaTipoentidadControlador {
     public void setSelectedpersonatipoentidad(PersonaTipoentidad selectedpersonatipoentidad) {
         this.selectedpersonatipoentidad = selectedpersonatipoentidad;
     }
-   
+    public void InsertarPersonaTipoentidad(){
+    objPersonaTipoentidadDao.InsertarPersonaTipoentidad(selectedpersonatipoentidad);
+    }
+    public void ActializarPersonaTipoentidad(){
+    objPersonaTipoentidadDao.ActualizarPersonaTipoentidad(selectedpersonatipoentidad);
+    }
+    public void EliminarPersonaTipoentidad(){
+    objPersonaTipoentidadDao.EliminarPersonaTipoentidad(selectedpersonatipoentidad);
+    }
    
 }

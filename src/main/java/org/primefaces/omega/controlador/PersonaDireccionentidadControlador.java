@@ -29,7 +29,7 @@ public class PersonaDireccionentidadControlador {
     }
 
     public List<PersonaDireccionentidad> getPersonadireccionentidad() {
-        return personadireccionentidad;
+        return personadireccionentidad = objPersonaDireccionentidadDao.LoadTablaPersonaDireccionentidades();
     }
    
 
@@ -41,6 +41,15 @@ public class PersonaDireccionentidadControlador {
         this.selectedpersonadireccionentidad = selectedpersonadireccionentidad;
     }
    
-
+    public void InsertarPersonaDireccionentidad(){
+    objPersonaDireccionentidadDao.InsertarPersonaDireccionentidad(selectedpersonadireccionentidad);
+    }
+    public void ActualizarPersonaDireccionentidad(){
+    objPersonaDireccionentidadDao.ActualizarPersonaDireccionentidad(selectedpersonadireccionentidad);
+    }
+    public void EliminarPersonaDireccionentidad(){
+    objPersonaDireccionentidadDao.EliminarPersonaDireccionentidad(selectedpersonadireccionentidad);
+    }
+    
     
 }

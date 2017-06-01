@@ -30,7 +30,7 @@ public class PersonaEntidadnegocioControlador {
     }
 
     public List<PersonaEntidadnegocio> getPersonaentidadnegocio() {
-        return personaentidadnegocio;
+        return personaentidadnegocio=objPersonaEntidadnegocioDao.LoadTablaPersonaEntidadnegocios();
     }
 
     public PersonaEntidadnegocio getSelectedpersonaentidadnegocio() {
@@ -40,6 +40,14 @@ public class PersonaEntidadnegocioControlador {
     public void setSelectedpersonaentidadnegocio(PersonaEntidadnegocio selectedpersonaentidadnegocio) {
         this.selectedpersonaentidadnegocio = selectedpersonaentidadnegocio;
     }
-    
+    public void InsertarPersonaEntidadnegocio(){
+    objPersonaEntidadnegocioDao.InsertarPersonaEntidadnegocio(selectedpersonaentidadnegocio);
+    }
+    public void ActualizarPersonaEntidadnegocio(){
+    objPersonaEntidadnegocioDao.ActualizarPersonaEntidadnegocio(selectedpersonaentidadnegocio);
+    }
+    public void EliminarPersonaEntidadnegocio(){
+    objPersonaEntidadnegocioDao.EliminarPersonaEntidadnegocio(selectedpersonaentidadnegocio);
+    }
     
 }
