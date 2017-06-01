@@ -10,6 +10,7 @@ import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.ArrayList;
 import org.primefaces.omega.modelo.PersonaTipodocumento;
 
 /**
@@ -18,7 +19,13 @@ import org.primefaces.omega.modelo.PersonaTipodocumento;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class PersonaTipodocumentoControlador {
+public class PersonaTipodocumentoControlador { 
+    private List<PersonaPersona> persona = null;
+    private PersonaPersona selectedPersona;
+    private PersonaEntidadnegocio selectEntidadnegocio;
+   
+    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
+    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
 
     
 }

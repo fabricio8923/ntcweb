@@ -10,6 +10,9 @@ import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.LogisticaDepartamentoDaoImplements;
 import org.primefaces.omega.modelo.LogisticaDepartamento;
 
 /**
@@ -18,7 +21,9 @@ import org.primefaces.omega.modelo.LogisticaDepartamento;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaDepartamentoControlador {
-
+public class LogisticaDepartamentoControlador { 
+    private List<LogisticaDepartamento> logisticadepartamento = null;
+    private LogisticaDepartamento selectedlogisticadepartamento;
+    private LogisticaDepartamentoDao objLogisticaDepartamentoDao= new LogisticaDepartamentoDaoImplements();
    
 }

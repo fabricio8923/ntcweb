@@ -8,8 +8,10 @@ package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.omega.modelo.Dao.Implements.PersonaEntidadnegocioDaoImplements;
 import org.primefaces.omega.modelo.LogisticaPais;
 
 /**
@@ -18,7 +20,11 @@ import org.primefaces.omega.modelo.LogisticaPais;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaPaisControlador {
+public class LogisticaPaisControlador { 
+    private List<LogisticaPais> logisticapais = null;
+    private LogisticaPais selectedlogisticapais;
+    private PersonaEntidadnegocioDao objPersonaEntidadnegocioDao= new PersonaEntidadnegocioDaoImplements();
+    
 
   
 }

@@ -10,6 +10,9 @@ import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.GeneralMotivoactividadDaoImplements;
 import org.primefaces.omega.modelo.GeneralMotivoactividad;
 
 /**
@@ -18,7 +21,11 @@ import org.primefaces.omega.modelo.GeneralMotivoactividad;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralMotivoactividadControlador {
+public class GeneralMotivoactividadControlador { 
+    private List<GeneralMotivoactividad> generalmotivoactividad = null;
+    private GeneralMotivoactividad selectedgeneralmotivoactividad;
+    private GeneralMotivoactividadDao objGeneralMotivoactividadDao= new GeneralMotivoactividadDaoImplements() ;
+   
 
 
 }

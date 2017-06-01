@@ -6,12 +6,11 @@
 
 package org.primefaces.omega.controlador;
 
+import java.util.List;
 import org.primefaces.omega.modelo.Dao.*;
-import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import org.primefaces.omega.modelo.Dao.Implements.GeneralCategoriaactividadDaoImplements;
 import org.primefaces.omega.modelo.GeneralCategoriaactividad;
 
 /**
@@ -20,7 +19,11 @@ import org.primefaces.omega.modelo.GeneralCategoriaactividad;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralCategoriaactividadControlador {
+public class GeneralCategoriaactividadControlador { 
+    private List<GeneralCategoriaactividad> generalcategoriaactividad = null;
+    private GeneralCategoriaactividad selectedgeneralcategoriaactividad;
+    private GeneralCategoriaactividadDao objGeneralCategoriaactividadDao= new GeneralCategoriaactividadDaoImplements();
+    
 
    
 }

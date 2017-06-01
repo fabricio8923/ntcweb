@@ -6,10 +6,11 @@
 
 package org.primefaces.omega.controlador;
 
+import java.util.List;
 import org.primefaces.omega.modelo.Dao.*;
-import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.omega.modelo.Dao.Implements.GeneralEstadoDaoImplements;
 import org.primefaces.omega.modelo.GeneralEstado;
 
 /**
@@ -18,7 +19,11 @@ import org.primefaces.omega.modelo.GeneralEstado;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralEstadoControlador {
+public class GeneralEstadoControlador { 
+    private List<GeneralEstado> generalestado = null;
+    private GeneralEstado selectedgeneralestado;
+    private GeneralEstadoDao objGeneralEstadoDao= new GeneralEstadoDaoImplements();
+  
 
    
 }

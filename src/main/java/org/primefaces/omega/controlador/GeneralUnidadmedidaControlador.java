@@ -10,6 +10,9 @@ import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.GeneralUnidadmedidaDaoImplements;
 import org.primefaces.omega.modelo.GeneralUnidadmedida;
 
 /**
@@ -18,7 +21,11 @@ import org.primefaces.omega.modelo.GeneralUnidadmedida;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralUnidadmedidaControlador {
+public class GeneralUnidadmedidaControlador { 
+    private List<GeneralUnidadmedida> generalunidadmedida = null;
+    private GeneralUnidadmedida selectedgeneralunidadmedida;
+    private GeneralUnidadmedidaDao objGeneralUnidadmedidaDao= new GeneralUnidadmedidaDaoImplements();
+   
 
    
 }

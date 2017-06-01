@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.omega.modelo.Dao.Implements.LogisticaTipodireccionDaoImplements;
 import org.primefaces.omega.modelo.LogisticaTipodireccion;
 
 /**
@@ -20,5 +21,8 @@ import org.primefaces.omega.modelo.LogisticaTipodireccion;
 @ViewScoped
 public class LogisticaTipodireccionControlador {
 
-   
+    private List<LogisticaTipodireccion> logisticatipodireccion = null;
+    private LogisticaTipodireccion selectedlogisticatipodireccion;
+    private LogisticaTipodireccionDao objLogisticaTipodireccionDao = new LogisticaTipodireccionDaoImplements();
+
 }
