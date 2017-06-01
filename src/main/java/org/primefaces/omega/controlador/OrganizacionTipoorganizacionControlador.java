@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.OrganizacionTipoorganizacionDaoImplements;
 import org.primefaces.omega.modelo.OrganizacionTipoorganizacion;
 
 /**
@@ -20,12 +22,10 @@ import org.primefaces.omega.modelo.OrganizacionTipoorganizacion;
 @ManagedBean(name = "")
 @ViewScoped
 public class OrganizacionTipoorganizacionControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+    private List<OrganizacionTipoorganizacion> organizaciontipoorganizacion = null;
+    private OrganizacionTipoorganizacion selectedorganizaciontipoorganizacion;
+    private OrganizacionTipoorganizacionDao objOrganizacionTipoorganizacionDao= new OrganizacionTipoorganizacionDaoImplements();
+    
 
     
 }
