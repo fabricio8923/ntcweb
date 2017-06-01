@@ -7,7 +7,7 @@
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
-import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
@@ -20,12 +20,25 @@ import org.primefaces.omega.modelo.PersonaEstadocivil;
 @ManagedBean(name = "")
 @ViewScoped
 public class PersonaEstadocivilControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+    private List<PersonaEstadocivil> personaestadocivil = null;
+    private PersonaEstadocivil selectedpersonaestadocivil;
+ 
+    private PersonaEstadocivilDao objPersonaEstadocivilDao= new PersonaEstadocivilImplements;
+
+    public PersonaEstadocivilControlador() {
+    }
+
+    public List<PersonaEstadocivil> getPersonaestadocivil() {
+        return personaestadocivil;
+    }
+
+    public PersonaEstadocivil getSelectedpersonaestadocivil() {
+        return selectedpersonaestadocivil;
+    }
+
+    public void setSelectedpersonaestadocivil(PersonaEstadocivil selectedpersonaestadocivil) {
+        this.selectedpersonaestadocivil = selectedpersonaestadocivil;
+    }
 
   
 }

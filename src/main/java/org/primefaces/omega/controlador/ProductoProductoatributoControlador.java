@@ -7,7 +7,7 @@
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
-import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
@@ -20,12 +20,24 @@ import org.primefaces.omega.modelo.ProductoProductoatributo;
 @ManagedBean(name = "")
 @ViewScoped
 public class ProductoProductoatributoControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+    private List<ProductoProductoatributo> productoproductoatributo = null;
+    private ProductoProductoatributo selectedproductoproductoatributo;
 
-    
+    private ProductoProductoatributoDao objProductoProductoatributoDao= new ProductoProductoatributoDaoImplements();
+
+    public ProductoProductoatributoControlador() {
+    }
+
+    public List<ProductoProductoatributo> getProductoproductoatributo() {
+        return productoproductoatributo;
+    }
+
+    public ProductoProductoatributo getSelectedproductoproductoatributo() {
+        return selectedproductoproductoatributo;
+    }
+
+    public void setSelectedproductoproductoatributo(ProductoProductoatributo selectedproductoproductoatributo) {
+        this.selectedproductoproductoatributo = selectedproductoproductoatributo;
+    }
+ 
 }
