@@ -25,7 +25,20 @@ public class GeneralMotivoactividadControlador {
     private List<GeneralMotivoactividad> generalmotivoactividad = null;
     private GeneralMotivoactividad selectedgeneralmotivoactividad;
     private GeneralMotivoactividadDao objGeneralMotivoactividadDao= new GeneralMotivoactividadDaoImplements() ;
+
+    public GeneralMotivoactividadControlador() {
+    }
+
+    public GeneralMotivoactividad getSelectedgeneralmotivoactividad() {
+        return selectedgeneralmotivoactividad;
+    }
+
+    public void setSelectedgeneralmotivoactividad(GeneralMotivoactividad selectedgeneralmotivoactividad) {
+        this.selectedgeneralmotivoactividad = selectedgeneralmotivoactividad;
+    }
+
+    public List<GeneralMotivoactividad> getGeneralmotivoactividad() {
+        return generalmotivoactividad;
+    }
    
-
-
 }

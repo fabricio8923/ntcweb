@@ -26,6 +26,23 @@ public class LogisticaUsodireccionControlador {
     //private PersonaEntidadnegocio selectEntidadnegocio;
    
     private LogisticaUsodireccionDao objLogisticaUsodireccionDao= new LogisticaUsodireccionDaoImplements();
+
+    public LogisticaUsodireccionControlador() {
+    }
+
+    
+    public List<LogisticaUsodireccion> getLogisticausodireccion() {
+        return logisticausodireccion;
+    }
+
+    
+    public LogisticaUsodireccion getSelectedlogisticausodireccion() {
+        return selectedlogisticausodireccion;
+    }
+
+    public void setSelectedlogisticausodireccion(LogisticaUsodireccion selectedlogisticausodireccion) {
+        this.selectedlogisticausodireccion = selectedlogisticausodireccion;
+    }
    
 
     

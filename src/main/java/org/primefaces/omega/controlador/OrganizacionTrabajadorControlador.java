@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.OrganizacionTrabajadorDaoImplements;
 import org.primefaces.omega.modelo.OrganizacionTrabajador;
 
 /**
@@ -20,12 +22,27 @@ import org.primefaces.omega.modelo.OrganizacionTrabajador;
 @ManagedBean(name = "")
 @ViewScoped
 public class OrganizacionTrabajadorControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
+    private List<OrganizacionTrabajador> organizaciontrabajador = null;
+    private OrganizacionTrabajador selectedorganizaciontrabajador;
+    private OrganizacionTrabajadorDao objOrganizacionTrabajadorDao= new OrganizacionTrabajadorDaoImplements();
+
+    public OrganizacionTrabajadorControlador() {
+    }
+
+    
+    public List<OrganizacionTrabajador> getOrganizaciontrabajador() {
+        return organizaciontrabajador;
+    }
+
+    
+    public OrganizacionTrabajador getSelectedorganizaciontrabajador() {
+        return selectedorganizaciontrabajador;
+    }
+
+    public void setSelectedorganizaciontrabajador(OrganizacionTrabajador selectedorganizaciontrabajador) {
+        this.selectedorganizaciontrabajador = selectedorganizaciontrabajador;
+    }
    
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
 
     
 }

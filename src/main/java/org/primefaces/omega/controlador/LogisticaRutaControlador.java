@@ -24,6 +24,22 @@ public class LogisticaRutaControlador {
     private List<LogisticaRuta> logisticaruta = null;
     private LogisticaRuta selectedlogisticaruta;
     private LogisticaRutaDao objLogisticaRutaDao= new LogisticaRutaDaoImplements();
+
+    public LogisticaRutaControlador() {
+    }
+
+    
+    public List<LogisticaRuta> getLogisticaruta() {
+        return logisticaruta;
+    }
+    
+    public LogisticaRuta getSelectedlogisticaruta() {
+        return selectedlogisticaruta;
+    }
+
+    public void setSelectedlogisticaruta(LogisticaRuta selectedlogisticaruta) {
+        this.selectedlogisticaruta = selectedlogisticaruta;
+    }
     
 
     

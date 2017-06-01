@@ -25,6 +25,21 @@ public class LogisticaLocacionControlador {
     private List<LogisticaLocacion> logisticalocacion = null;
     private LogisticaLocacion selectedlogisticalocacion;
     private LogisticaLocacionDao objLogisticaLocacionDao= new LogisticaLocacionDaoImplements();
+
+    public LogisticaLocacionControlador() {
+    }
+
+    public LogisticaLocacion getSelectedlogisticalocacion() {
+        return selectedlogisticalocacion;
+    }
+
+    public void setSelectedlogisticalocacion(LogisticaLocacion selectedlogisticalocacion) {
+        this.selectedlogisticalocacion = selectedlogisticalocacion;
+    }
+
+    public List<LogisticaLocacion> getLogisticalocacion() {
+        return logisticalocacion;
+    }
    
 
    

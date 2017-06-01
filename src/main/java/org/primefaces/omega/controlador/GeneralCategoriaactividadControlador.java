@@ -23,7 +23,21 @@ public class GeneralCategoriaactividadControlador {
     private List<GeneralCategoriaactividad> generalcategoriaactividad = null;
     private GeneralCategoriaactividad selectedgeneralcategoriaactividad;
     private GeneralCategoriaactividadDao objGeneralCategoriaactividadDao= new GeneralCategoriaactividadDaoImplements();
-    
 
-   
+    public GeneralCategoriaactividadControlador(GeneralCategoriaactividad selectedgeneralcategoriaactividad) {
+       
+    }
+
+    public GeneralCategoriaactividad getSelectedgeneralcategoriaactividad() {
+        return selectedgeneralcategoriaactividad;
+    }
+
+    public void setSelectedgeneralcategoriaactividad(GeneralCategoriaactividad selectedgeneralcategoriaactividad) {
+        this.selectedgeneralcategoriaactividad = selectedgeneralcategoriaactividad;
+    }
+
+    public List<GeneralCategoriaactividad> getGeneralcategoriaactividad() {
+        return generalcategoriaactividad;
+    }
+       
 }

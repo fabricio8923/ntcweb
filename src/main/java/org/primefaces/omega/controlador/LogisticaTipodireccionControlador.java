@@ -25,4 +25,22 @@ public class LogisticaTipodireccionControlador {
     private LogisticaTipodireccion selectedlogisticatipodireccion;
     private LogisticaTipodireccionDao objLogisticaTipodireccionDao = new LogisticaTipodireccionDaoImplements();
 
+    public LogisticaTipodireccionControlador() {
+    }
+
+    
+    public List<LogisticaTipodireccion> getLogisticatipodireccion() {
+        return logisticatipodireccion;
+    }
+
+    
+    public LogisticaTipodireccion getSelectedlogisticatipodireccion() {
+        return selectedlogisticatipodireccion;
+    }
+
+    public void setSelectedlogisticatipodireccion(LogisticaTipodireccion selectedlogisticatipodireccion) {
+        this.selectedlogisticatipodireccion = selectedlogisticatipodireccion;
+    }
+
+    
 }

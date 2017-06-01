@@ -25,6 +25,21 @@ public class GeneralUnidadmedidaControlador {
     private List<GeneralUnidadmedida> generalunidadmedida = null;
     private GeneralUnidadmedida selectedgeneralunidadmedida;
     private GeneralUnidadmedidaDao objGeneralUnidadmedidaDao= new GeneralUnidadmedidaDaoImplements();
+
+    public GeneralUnidadmedidaControlador() {
+    }
+
+    public GeneralUnidadmedida getSelectedgeneralunidadmedida() {
+        return selectedgeneralunidadmedida;
+    }
+
+    public void setSelectedgeneralunidadmedida(GeneralUnidadmedida selectedgeneralunidadmedida) {
+        this.selectedgeneralunidadmedida = selectedgeneralunidadmedida;
+    }
+
+    public List<GeneralUnidadmedida> getGeneralunidadmedida() {
+        return generalunidadmedida;
+    }
    
 
    

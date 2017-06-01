@@ -24,6 +24,23 @@ public class LogisticaProvinciaControlador {
     private List<LogisticaProvincia> logisticaprovincia = null;
     private LogisticaProvincia selectedlogisticaprovincia;
     private LogisticaProvinciaDao objLogisticaProvinciaDao= new LogisticaProvinciaDaoImplements();
+
+    public LogisticaProvinciaControlador() {
+    }
+
+    
+    public List<LogisticaProvincia> getLogisticaprovincia() {
+        return logisticaprovincia;
+    }
+
+    
+    public LogisticaProvincia getSelectedlogisticaprovincia() {
+        return selectedlogisticaprovincia;
+    }
+
+    public void setSelectedlogisticaprovincia(LogisticaProvincia selectedlogisticaprovincia) {
+        this.selectedlogisticaprovincia = selectedlogisticaprovincia;
+    }
     
 
   

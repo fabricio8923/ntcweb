@@ -23,6 +23,23 @@ public class GeneralEstadoControlador {
     private List<GeneralEstado> generalestado = null;
     private GeneralEstado selectedgeneralestado;
     private GeneralEstadoDao objGeneralEstadoDao= new GeneralEstadoDaoImplements();
+
+    public GeneralEstadoControlador() {
+        
+    }
+
+    
+    public GeneralEstado getSelectedgeneralestado() {
+        return selectedgeneralestado;
+    }
+
+    public void setSelectedgeneralestado(GeneralEstado selectedgeneralestado) {
+        this.selectedgeneralestado = selectedgeneralestado;
+    }
+
+    public List<GeneralEstado> getGeneralestado() {
+        return generalestado;
+    }
   
 
    

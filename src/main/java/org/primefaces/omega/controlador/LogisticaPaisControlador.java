@@ -24,6 +24,23 @@ public class LogisticaPaisControlador {
     private List<LogisticaPais> logisticapais = null;
     private LogisticaPais selectedlogisticapais;
     private PersonaEntidadnegocioDao objPersonaEntidadnegocioDao= new PersonaEntidadnegocioDaoImplements();
+
+    public LogisticaPaisControlador() {
+    }
+
+    
+    public List<LogisticaPais> getLogisticapais() {
+        return logisticapais;
+    }
+
+    
+    public LogisticaPais getSelectedlogisticapais() {
+        return selectedlogisticapais;
+    }
+
+    public void setSelectedlogisticapais(LogisticaPais selectedlogisticapais) {
+        this.selectedlogisticapais = selectedlogisticapais;
+    }
     
 
   

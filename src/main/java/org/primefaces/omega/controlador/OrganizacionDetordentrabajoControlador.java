@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.OrganizacionDetordentrabajoDaoImplements;
 import org.primefaces.omega.modelo.OrganizacionDetordentrabajo;
 
 /**
@@ -20,12 +22,27 @@ import org.primefaces.omega.modelo.OrganizacionDetordentrabajo;
 @ManagedBean(name = "")
 @ViewScoped
 public class OrganizacionDetordentrabajoControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+    private List<OrganizacionDetordentrabajo> organizaciondetordentrabajo = null;
+    private OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo;
+    private OrganizacionDetordentrabajoDao objOrganizacionDetordentrabajoDao= new OrganizacionDetordentrabajoDaoImplements();
 
+    public OrganizacionDetordentrabajoControlador() {
+    }
+
+    
+    public List<OrganizacionDetordentrabajo> getOrganizaciondetordentrabajo() {
+        return organizaciondetordentrabajo;
+    }
+
+    
+    public OrganizacionDetordentrabajo getSelectedorganizaciondetordentrabajo() {
+        return selectedorganizaciondetordentrabajo;
+    }
+
+    public void setSelectedorganizaciondetordentrabajo(OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo) {
+        this.selectedorganizaciondetordentrabajo = selectedorganizaciondetordentrabajo;
+    }
+    
+    
     
 }

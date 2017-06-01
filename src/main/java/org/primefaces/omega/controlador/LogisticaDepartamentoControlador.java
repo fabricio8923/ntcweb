@@ -25,5 +25,22 @@ public class LogisticaDepartamentoControlador {
     private List<LogisticaDepartamento> logisticadepartamento = null;
     private LogisticaDepartamento selectedlogisticadepartamento;
     private LogisticaDepartamentoDao objLogisticaDepartamentoDao= new LogisticaDepartamentoDaoImplements();
+
+    public LogisticaDepartamentoControlador() {
+    }
+
+    
+    public LogisticaDepartamento getSelectedlogisticadepartamento() {
+        return selectedlogisticadepartamento;
+    }
+
+    public void setSelectedlogisticadepartamento(LogisticaDepartamento selectedlogisticadepartamento) {
+        this.selectedlogisticadepartamento = selectedlogisticadepartamento;
+    }
+
+    public List<LogisticaDepartamento> getLogisticadepartamento() {
+        return logisticadepartamento;
+    }
    
+    
 }

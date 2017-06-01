@@ -25,6 +25,23 @@ public class OrganizacionTipoorganizacionControlador {
     private List<OrganizacionTipoorganizacion> organizaciontipoorganizacion = null;
     private OrganizacionTipoorganizacion selectedorganizaciontipoorganizacion;
     private OrganizacionTipoorganizacionDao objOrganizacionTipoorganizacionDao= new OrganizacionTipoorganizacionDaoImplements();
+
+    public OrganizacionTipoorganizacionControlador() {
+    }
+
+    
+    public List<OrganizacionTipoorganizacion> getOrganizaciontipoorganizacion() {
+        return organizaciontipoorganizacion;
+    }
+
+    
+    public OrganizacionTipoorganizacion getSelectedorganizaciontipoorganizacion() {
+        return selectedorganizaciontipoorganizacion;
+    }
+
+    public void setSelectedorganizaciontipoorganizacion(OrganizacionTipoorganizacion selectedorganizaciontipoorganizacion) {
+        this.selectedorganizaciontipoorganizacion = selectedorganizaciontipoorganizacion;
+    }
     
 
     
