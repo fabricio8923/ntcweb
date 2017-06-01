@@ -25,4 +25,31 @@ public class LogisticaTipodireccionControlador {
     private LogisticaTipodireccion selectedlogisticatipodireccion;
     private LogisticaTipodireccionDao objLogisticaTipodireccionDao = new LogisticaTipodireccionDaoImplements();
 
+    public LogisticaTipodireccionControlador() {
+    }
+
+    public List<LogisticaTipodireccion> getLogisticatipodireccion() {
+        return logisticatipodireccion = objLogisticaTipodireccionDao.LoadTablaLogisticaTipodirecciones();
+    }
+
+    public LogisticaTipodireccion getSelectedlogisticatipodireccion() {
+        return selectedlogisticatipodireccion;
+    }
+
+    public void setSelectedlogisticatipodireccion(LogisticaTipodireccion selectedlogisticatipodireccion) {
+        this.selectedlogisticatipodireccion = selectedlogisticatipodireccion;
+    }
+
+    public void InsertarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.InsertarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
+    public void ActualizarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.ActualizarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
+    public void EliminarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.EliminarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
 }

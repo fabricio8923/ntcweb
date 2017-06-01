@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -11,6 +10,8 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.OrganizacionProveedorDaoImplements;
 import org.primefaces.omega.modelo.OrganizacionProveedor;
 
 /**
@@ -19,13 +20,37 @@ import org.primefaces.omega.modelo.OrganizacionProveedor;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionProveedorControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+public class OrganizacionProveedorControlador {
 
-    
+    private List<OrganizacionProveedor> organizacionproveedor = null;
+    private OrganizacionProveedor selectedorganizacionproveedor;
+    private OrganizacionProveedorDao objOrganizacionProveedorDao = new OrganizacionProveedorDaoImplements();
+
+    public OrganizacionProveedorControlador() {
+    }
+
+    public List<OrganizacionProveedor> getOrganizacionproveedor() {
+        return organizacionproveedor = objOrganizacionProveedorDao.LoadTablaOrganizacionProveedores();
+    }
+
+    public OrganizacionProveedor getSelectedorganizacionproveedor() {
+        return selectedorganizacionproveedor;
+    }
+
+    public void setSelectedorganizacionproveedor(OrganizacionProveedor selectedorganizacionproveedor) {
+        this.selectedorganizacionproveedor = selectedorganizacionproveedor;
+    }
+
+    public void InsertarOrganizacionProveedor() {
+        objOrganizacionProveedorDao.InsertarOrganizacionProveedor(selectedorganizacionproveedor);
+    }
+
+    public void ActualizarOrganizacionProveedor() {
+        objOrganizacionProveedorDao.ActualizarOrganizacionProveedor(selectedorganizacionproveedor);
+    }
+
+    public void EliminarOrganizacionProveedor() {
+        objOrganizacionProveedorDao.EliminarOrganizacionProveedor(selectedorganizacionproveedor);
+    }
+
 }

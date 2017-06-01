@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -11,6 +10,8 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.omega.modelo.Dao.Implements.OrganizacionDetordentrabajoDaoImplements;
 import org.primefaces.omega.modelo.OrganizacionDetordentrabajo;
 
 /**
@@ -19,13 +20,37 @@ import org.primefaces.omega.modelo.OrganizacionDetordentrabajo;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionDetordentrabajoControlador { 
-    private List<PersonaPersona> persona = null;
-    private PersonaPersona selectedPersona;
-    private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private PersonaEntidadnegocioDao objEntidadNegocioDao= new PersonaEntidadnegocioDaoImplements();
-    private PersonaPersonaDao objPersonaDao = new PersonaPersonaDaoImplements();
+public class OrganizacionDetordentrabajoControlador {
 
-    
+    private List<OrganizacionDetordentrabajo> organizaciondetordentrabajo = null;
+    private OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo;
+    private OrganizacionDetordentrabajoDao objOrganizacionDetordentrabajoDao = new OrganizacionDetordentrabajoDaoImplements();
+
+    public OrganizacionDetordentrabajoControlador() {
+    }
+
+    public List<OrganizacionDetordentrabajo> getOrganizaciondetordentrabajo() {
+        return organizaciondetordentrabajo = objOrganizacionDetordentrabajoDao.LoadTablaOrganizacionDetordentrabajos();
+    }
+
+    public OrganizacionDetordentrabajo getSelectedorganizaciondetordentrabajo() {
+        return selectedorganizaciondetordentrabajo;
+    }
+
+    public void setSelectedorganizaciondetordentrabajo(OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo) {
+        this.selectedorganizaciondetordentrabajo = selectedorganizaciondetordentrabajo;
+    }
+
+    public void InsertarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.InsertarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
+    public void ActualizarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.ActualizarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
+    public void EliminarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.EliminarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
 }
