@@ -23,7 +23,7 @@ public class PersonaTipoentidadControlador {
     private List<PersonaTipoentidad> personatipoentidad = null;
     private PersonaTipoentidad selectedpersonatipoentidad;
   
-    private PersonaTipoentidadDao objPersonaTipoentidadDao= new PersonaTipoentidadDaoImplements;
+    private PersonaTipoentidadDao objPersonaTipoentidadDao= new PersonaTipoentidadDaoImplements();
 
     public PersonaTipoentidadControlador() {
     }
