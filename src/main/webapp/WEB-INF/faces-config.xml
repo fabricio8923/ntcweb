@@ -17,32 +17,4 @@
             <renderer-class>org.primefaces.omega.component.menu.OmegaMenuRenderer</renderer-class>
         </renderer>
     </render-kit>
-    <application>
-        <el-resolver>org.primefaces.omega.jsfclasses.util.JsfCrudELResolver</el-resolver>
-        <resource-bundle>
-            <base-name>/MyBundle</base-name>
-            <var>myBundle</var>
-        </resource-bundle>
-       
-        <resource-bundle>
-            <base-name>/MyBundle</base-name>
-            <var>myBundle</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/MyBundle</base-name>
-            <var>myBundle</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/MyBundle</base-name>
-            <var>myBundle</var>
-        </resource-bundle>
-    </application>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>welcome</from-outcome>
-            <to-view-id>/welcomeJSF.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
 </faces-config>
