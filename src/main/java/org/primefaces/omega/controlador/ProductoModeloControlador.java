@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import org.primefaces.omega.modelo.Dao.Implements.ProductoModeloDaoImplements;
 import org.primefaces.omega.modelo.ProductoModelo;
 
 /**

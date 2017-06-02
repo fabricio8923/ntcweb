@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import org.primefaces.omega.modelo.Dao.Implements.PersonaTipodocumentoDaoImplements;
 import org.primefaces.omega.modelo.PersonaTipodocumento;
 
 /**
@@ -23,7 +24,7 @@ public class PersonaTipodocumentoControlador {
     private List<PersonaTipodocumento> personatipodocumento = null;
     private PersonaTipodocumento selectedpersonatipodocumento;
    
-    private PersonaTipodocumentoDao objPersonaTipodocumentoDao= new PersonaTipodocumentoDaoImplements;
+    private PersonaTipodocumentoDao objPersonaTipodocumentoDao= new PersonaTipodocumentoDaoImplements();
 
     public PersonaTipodocumentoControlador() {
     }
