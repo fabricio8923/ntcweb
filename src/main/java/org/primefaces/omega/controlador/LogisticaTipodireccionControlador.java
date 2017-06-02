@@ -28,12 +28,10 @@ public class LogisticaTipodireccionControlador {
     public LogisticaTipodireccionControlador() {
     }
 
-    
     public List<LogisticaTipodireccion> getLogisticatipodireccion() {
-        return logisticatipodireccion;
+        return logisticatipodireccion = objLogisticaTipodireccionDao.LoadTablaLogisticaTipodirecciones();
     }
 
-    
     public LogisticaTipodireccion getSelectedlogisticatipodireccion() {
         return selectedlogisticatipodireccion;
     }
@@ -42,5 +40,16 @@ public class LogisticaTipodireccionControlador {
         this.selectedlogisticatipodireccion = selectedlogisticatipodireccion;
     }
 
-    
+    public void InsertarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.InsertarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
+    public void ActualizarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.ActualizarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
+    public void EliminarLogisticaTipodireccion() {
+        objLogisticaTipodireccionDao.EliminarLogisticaTipodireccion(selectedlogisticatipodireccion);
+    }
+
 }

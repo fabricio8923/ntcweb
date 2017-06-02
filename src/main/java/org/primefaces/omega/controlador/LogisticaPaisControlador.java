@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.omega.modelo.Dao.Implements.LogisticaPaisDaoImplements;
 import org.primefaces.omega.modelo.Dao.Implements.PersonaEntidadnegocioDaoImplements;
 import org.primefaces.omega.modelo.LogisticaPais;
 
@@ -20,20 +20,19 @@ import org.primefaces.omega.modelo.LogisticaPais;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaPaisControlador { 
+public class LogisticaPaisControlador {
+
     private List<LogisticaPais> logisticapais = null;
     private LogisticaPais selectedlogisticapais;
-    private PersonaEntidadnegocioDao objPersonaEntidadnegocioDao= new PersonaEntidadnegocioDaoImplements();
+    private LogisticaPaisDao objLogisticaPaisDao = new LogisticaPaisDaoImplements();
 
     public LogisticaPaisControlador() {
     }
 
-    
     public List<LogisticaPais> getLogisticapais() {
-        return logisticapais;
+        return logisticapais = objLogisticaPaisDao.LoadTablaLogisticaPaises();
     }
 
-    
     public LogisticaPais getSelectedlogisticapais() {
         return selectedlogisticapais;
     }
@@ -41,7 +40,16 @@ public class LogisticaPaisControlador {
     public void setSelectedlogisticapais(LogisticaPais selectedlogisticapais) {
         this.selectedlogisticapais = selectedlogisticapais;
     }
-    
 
-  
+    public void InsertarLogisticaPais() {
+        objLogisticaPaisDao.InsertarLogisticaPais(selectedlogisticapais);
+    }
+
+    public void ActualizarLogisticaPais() {
+        objLogisticaPaisDao.ActualizarLogisticaPais(selectedlogisticapais);
+    }
+
+    public void EliminarLogisticaPais() {
+        objLogisticaPaisDao.EliminarLogisticaPais(selectedlogisticapais);
+    }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -20,20 +19,19 @@ import org.primefaces.omega.modelo.LogisticaProvincia;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaProvinciaControlador { 
+public class LogisticaProvinciaControlador {
+
     private List<LogisticaProvincia> logisticaprovincia = null;
     private LogisticaProvincia selectedlogisticaprovincia;
-    private LogisticaProvinciaDao objLogisticaProvinciaDao= new LogisticaProvinciaDaoImplements();
+    private LogisticaProvinciaDao objLogisticaProvinciaDao = new LogisticaProvinciaDaoImplements();
 
     public LogisticaProvinciaControlador() {
     }
 
-    
     public List<LogisticaProvincia> getLogisticaprovincia() {
-        return logisticaprovincia;
+        return logisticaprovincia = objLogisticaProvinciaDao.LoadTablaLogisticaProvincias();
     }
 
-    
     public LogisticaProvincia getSelectedlogisticaprovincia() {
         return selectedlogisticaprovincia;
     }
@@ -41,7 +39,17 @@ public class LogisticaProvinciaControlador {
     public void setSelectedlogisticaprovincia(LogisticaProvincia selectedlogisticaprovincia) {
         this.selectedlogisticaprovincia = selectedlogisticaprovincia;
     }
-    
 
-  
+    public void InsertarLogisticaProvincia() {
+        objLogisticaProvinciaDao.InsertarLogisticaProvincia(selectedlogisticaprovincia);
+    }
+
+    public void ActualizarLogisticaProvincia() {
+        objLogisticaProvinciaDao.ActualizarLogisticaProvincia(selectedlogisticaprovincia);
+    }
+
+    public void EliminarLogisticaProvincia() {
+        objLogisticaProvinciaDao.EliminarLogisticaProvincia(selectedlogisticaprovincia);
+    }
+
 }

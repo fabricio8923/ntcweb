@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionOrganizacion;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionOrganizacionControlador { 
+public class OrganizacionOrganizacionControlador {
+
     private List<OrganizacionOrganizacion> organizacionorganizacion = null;
     private OrganizacionOrganizacion selectedorganizacionorganizacion;
-    private OrganizacionOrganizacionDao objOrganizacionOrganizacionDao= new OrganizacionOrganizacionDaoImplements();
+    private OrganizacionOrganizacionDao objOrganizacionOrganizacionDao = new OrganizacionOrganizacionDaoImplements();
 
     public OrganizacionOrganizacionControlador() {
     }
 
-    
     public List<OrganizacionOrganizacion> getOrganizacionorganizacion() {
-        return organizacionorganizacion;
+        return organizacionorganizacion = objOrganizacionOrganizacionDao.LoadTablaOrganizacionOrganizaciones();
     }
 
-    
     public OrganizacionOrganizacion getSelectedorganizacionorganizacion() {
         return selectedorganizacionorganizacion;
     }
@@ -42,7 +40,17 @@ public class OrganizacionOrganizacionControlador {
     public void setSelectedorganizacionorganizacion(OrganizacionOrganizacion selectedorganizacionorganizacion) {
         this.selectedorganizacionorganizacion = selectedorganizacionorganizacion;
     }
-   
-    
-    
+
+    public void InsertarOrganizacionOrganizacion() {
+        objOrganizacionOrganizacionDao.InsertarOrganizacionOrganizacion(selectedorganizacionorganizacion);
+    }
+
+    public void ActualizarOrganizacionOrganizacion() {
+        objOrganizacionOrganizacionDao.ActualizarOrganizacionOrganizacion(selectedorganizacionorganizacion);
+    }
+
+    public void EliminarOrganizacionOrganizacion() {
+        objOrganizacionOrganizacionDao.EliminarOrganizacionOrganizacion(selectedorganizacionorganizacion);
+    }
+
 }

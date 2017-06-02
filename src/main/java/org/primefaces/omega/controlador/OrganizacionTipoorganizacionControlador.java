@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionTipoorganizacion;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionTipoorganizacionControlador { 
+public class OrganizacionTipoorganizacionControlador {
+
     private List<OrganizacionTipoorganizacion> organizaciontipoorganizacion = null;
     private OrganizacionTipoorganizacion selectedorganizaciontipoorganizacion;
-    private OrganizacionTipoorganizacionDao objOrganizacionTipoorganizacionDao= new OrganizacionTipoorganizacionDaoImplements();
+    private OrganizacionTipoorganizacionDao objOrganizacionTipoorganizacionDao = new OrganizacionTipoorganizacionDaoImplements();
 
     public OrganizacionTipoorganizacionControlador() {
     }
 
-    
     public List<OrganizacionTipoorganizacion> getOrganizaciontipoorganizacion() {
-        return organizaciontipoorganizacion;
+        return organizaciontipoorganizacion = objOrganizacionTipoorganizacionDao.LoadTablaOrganizacionTipoorganizaciones();
     }
 
-    
     public OrganizacionTipoorganizacion getSelectedorganizaciontipoorganizacion() {
         return selectedorganizaciontipoorganizacion;
     }
@@ -42,7 +40,17 @@ public class OrganizacionTipoorganizacionControlador {
     public void setSelectedorganizaciontipoorganizacion(OrganizacionTipoorganizacion selectedorganizaciontipoorganizacion) {
         this.selectedorganizaciontipoorganizacion = selectedorganizaciontipoorganizacion;
     }
-    
 
-    
+    public void InsertarOrganizacionTipoorganizacion() {
+        objOrganizacionTipoorganizacionDao.InsertarOrganizacionTipoorganizacion(selectedorganizaciontipoorganizacion);
+    }
+
+    public void ActualizarOrganizacionTipoorganizacion() {
+        objOrganizacionTipoorganizacionDao.ActualizarOrganizacionTipoorganizacion(selectedorganizaciontipoorganizacion);
+    }
+
+    public void EliminarOrganizacionTipoorganizacion() {
+        objOrganizacionTipoorganizacionDao.EliminarOrganizacionTipoorganizacion(selectedorganizaciontipoorganizacion);
+    }
+
 }

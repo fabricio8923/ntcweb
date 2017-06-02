@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,10 +20,11 @@ import org.primefaces.omega.modelo.GeneralMotivoactividad;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralMotivoactividadControlador { 
+public class GeneralMotivoactividadControlador {
+
     private List<GeneralMotivoactividad> generalmotivoactividad = null;
     private GeneralMotivoactividad selectedgeneralmotivoactividad;
-    private GeneralMotivoactividadDao objGeneralMotivoactividadDao= new GeneralMotivoactividadDaoImplements() ;
+    private GeneralMotivoactividadDao objGeneralMotivoactividadDao = new GeneralMotivoactividadDaoImplements();
 
     public GeneralMotivoactividadControlador() {
     }
@@ -38,7 +38,18 @@ public class GeneralMotivoactividadControlador {
     }
 
     public List<GeneralMotivoactividad> getGeneralmotivoactividad() {
-        return generalmotivoactividad;
+        return generalmotivoactividad=objGeneralMotivoactividadDao.LoadTablaGeneralMotivoactividades();
     }
-   
+
+    public void InsertarGeneralMotivoactividad() {
+        objGeneralMotivoactividadDao.InsertarGeneralMotivoactividad(selectedgeneralmotivoactividad);
+    }
+
+    public void ActualizarGeneralMotivoactividad() {
+        objGeneralMotivoactividadDao.ActualizarGeneralMotivoactividad(selectedgeneralmotivoactividad);
+    }
+
+    public void EliminarGeneralMotivoactividad() {
+        objGeneralMotivoactividadDao.EliminarGeneralMotivoactividad(selectedgeneralmotivoactividad);
+    }
 }

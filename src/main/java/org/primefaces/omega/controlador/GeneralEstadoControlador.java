@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import java.util.List;
@@ -19,16 +18,16 @@ import org.primefaces.omega.modelo.GeneralEstado;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class GeneralEstadoControlador { 
+public class GeneralEstadoControlador {
+
     private List<GeneralEstado> generalestado = null;
     private GeneralEstado selectedgeneralestado;
-    private GeneralEstadoDao objGeneralEstadoDao= new GeneralEstadoDaoImplements();
+    private GeneralEstadoDao objGeneralEstadoDao = new GeneralEstadoDaoImplements();
 
     public GeneralEstadoControlador() {
-        
+
     }
 
-    
     public GeneralEstado getSelectedgeneralestado() {
         return selectedgeneralestado;
     }
@@ -38,9 +37,17 @@ public class GeneralEstadoControlador {
     }
 
     public List<GeneralEstado> getGeneralestado() {
-        return generalestado;
+        return generalestado = objGeneralEstadoDao.LoadTablaGeneralEstadoes();
     }
-  
 
-   
+    public void InsertarGeneralEstado() {
+        objGeneralEstadoDao.InsertarGeneralEstado(selectedgeneralestado);
+    }
+    public void ActualiarGeneralEstado() {
+        objGeneralEstadoDao.ActualizarGeneralEstado(selectedgeneralestado);
+    }
+    public void EliminarGeneralEstado() {
+        objGeneralEstadoDao.EliminarGeneralEstado(selectedgeneralestado);
+    }
+
 }

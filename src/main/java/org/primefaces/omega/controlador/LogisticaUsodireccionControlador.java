@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -20,22 +19,21 @@ import org.primefaces.omega.modelo.LogisticaUsodireccion;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaUsodireccionControlador { 
+public class LogisticaUsodireccionControlador {
+
     private List<LogisticaUsodireccion> logisticausodireccion = null;
     private LogisticaUsodireccion selectedlogisticausodireccion;
     //private PersonaEntidadnegocio selectEntidadnegocio;
-   
-    private LogisticaUsodireccionDao objLogisticaUsodireccionDao= new LogisticaUsodireccionDaoImplements();
+
+    private LogisticaUsodireccionDao objLogisticaUsodireccionDao = new LogisticaUsodireccionDaoImplements();
 
     public LogisticaUsodireccionControlador() {
     }
 
-    
     public List<LogisticaUsodireccion> getLogisticausodireccion() {
-        return logisticausodireccion;
+        return logisticausodireccion = objLogisticaUsodireccionDao.LoadTablaLogisticaUsodirecciones();
     }
 
-    
     public LogisticaUsodireccion getSelectedlogisticausodireccion() {
         return selectedlogisticausodireccion;
     }
@@ -43,7 +41,17 @@ public class LogisticaUsodireccionControlador {
     public void setSelectedlogisticausodireccion(LogisticaUsodireccion selectedlogisticausodireccion) {
         this.selectedlogisticausodireccion = selectedlogisticausodireccion;
     }
-   
 
-    
+    public void InsertarLogisticaUsodireccion() {
+        objLogisticaUsodireccionDao.InsertarLogisticaUsodireccion(selectedlogisticausodireccion);
+    }
+
+    public void ActualizarLogisticaUsodireccion() {
+        objLogisticaUsodireccionDao.ActualizarLogisticaUsodireccion(selectedlogisticausodireccion);
+    }
+
+    public void EliminarLogisticaUsodireccion() {
+        objLogisticaUsodireccionDao.EliminarLogisticaUsodireccion(selectedlogisticausodireccion);
+    }
+
 }

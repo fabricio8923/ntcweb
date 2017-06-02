@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionCliente;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionClienteControlador { 
+public class OrganizacionClienteControlador {
+
     private List<OrganizacionCliente> organizacioncliente = null;
     private OrganizacionCliente selectedorganizacioncliente;
-    private OrganizacionClienteDao objOrganizacionClienteDao= new OrganizacionClienteDaoImplements();
+    private OrganizacionClienteDao objOrganizacionClienteDao = new OrganizacionClienteDaoImplements();
 
     public OrganizacionClienteControlador() {
     }
 
-    
     public List<OrganizacionCliente> getOrganizacioncliente() {
-        return organizacioncliente;
+        return organizacioncliente = objOrganizacionClienteDao.LoadTablaOrganizacionClientes();
     }
 
-    
     public OrganizacionCliente getSelectedorganizacioncliente() {
         return selectedorganizacioncliente;
     }
@@ -42,7 +40,17 @@ public class OrganizacionClienteControlador {
     public void setSelectedorganizacioncliente(OrganizacionCliente selectedorganizacioncliente) {
         this.selectedorganizacioncliente = selectedorganizacioncliente;
     }
-    
 
-   
+    public void InsertarOrganizacionCliente() {
+        objOrganizacionClienteDao.InsertarOrganizacionCliente(selectedorganizacioncliente);
+    }
+
+    public void ActualizarOrganizacionCliente() {
+        objOrganizacionClienteDao.ActualizarOrganizacionCliente(selectedorganizacioncliente);
+    }
+
+    public void EliminarOrganizacionCliente() {
+        objOrganizacionClienteDao.EliminarOrganizacionCliente(selectedorganizacioncliente);
+    }
+
 }

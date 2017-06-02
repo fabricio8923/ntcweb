@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionDetordenservicio;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionDetordenservicioControlador { 
+public class OrganizacionDetordenservicioControlador {
+
     private List<OrganizacionDetordenservicio> organizaciondetordenservicio = null;
     private OrganizacionDetordenservicio selectedorganizaciondetordenservicio;
-    private OrganizacionDetordenservicioDao objOrganizacionDetordenservicioDao= new OrganizacionDetordenservicioDaoImplements();
+    private OrganizacionDetordenservicioDao objOrganizacionDetordenservicioDao = new OrganizacionDetordenservicioDaoImplements();
 
     public OrganizacionDetordenservicioControlador() {
     }
 
-    
     public List<OrganizacionDetordenservicio> getOrganizaciondetordenservicio() {
-        return organizaciondetordenservicio;
+        return organizaciondetordenservicio = objOrganizacionDetordenservicioDao.LoadTablaOrganizacionDetordenservicios();
     }
 
-    
     public OrganizacionDetordenservicio getSelectedorganizaciondetordenservicio() {
         return selectedorganizaciondetordenservicio;
     }
@@ -42,8 +40,17 @@ public class OrganizacionDetordenservicioControlador {
     public void setSelectedorganizaciondetordenservicio(OrganizacionDetordenservicio selectedorganizaciondetordenservicio) {
         this.selectedorganizaciondetordenservicio = selectedorganizaciondetordenservicio;
     }
-   
-    
 
-   
+    public void InsertarOrganizacionDetordenservicio() {
+        objOrganizacionDetordenservicioDao.InsertarOrganizacionDetordenservicio(selectedorganizaciondetordenservicio);
+    }
+
+    public void ActualizarOrganizacionDetordenservicio() {
+        objOrganizacionDetordenservicioDao.ActualizarOrganizacionDetordenservicio(selectedorganizaciondetordenservicio);
+    }
+
+    public void EliminarOrganizacionDetordenservicio() {
+        objOrganizacionDetordenservicioDao.EliminarOrganizacionDetordenservicio(selectedorganizaciondetordenservicio);
+    }
+
 }

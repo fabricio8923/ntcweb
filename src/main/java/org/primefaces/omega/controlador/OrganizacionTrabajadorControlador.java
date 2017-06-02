@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionTrabajador;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionTrabajadorControlador { 
+public class OrganizacionTrabajadorControlador {
+
     private List<OrganizacionTrabajador> organizaciontrabajador = null;
     private OrganizacionTrabajador selectedorganizaciontrabajador;
-    private OrganizacionTrabajadorDao objOrganizacionTrabajadorDao= new OrganizacionTrabajadorDaoImplements();
+    private OrganizacionTrabajadorDao objOrganizacionTrabajadorDao = new OrganizacionTrabajadorDaoImplements();
 
     public OrganizacionTrabajadorControlador() {
     }
 
-    
     public List<OrganizacionTrabajador> getOrganizaciontrabajador() {
-        return organizaciontrabajador;
+        return organizaciontrabajador = objOrganizacionTrabajadorDao.LoadTablaOrganizacionTrabajadores();
     }
 
-    
     public OrganizacionTrabajador getSelectedorganizaciontrabajador() {
         return selectedorganizaciontrabajador;
     }
@@ -42,7 +40,17 @@ public class OrganizacionTrabajadorControlador {
     public void setSelectedorganizaciontrabajador(OrganizacionTrabajador selectedorganizaciontrabajador) {
         this.selectedorganizaciontrabajador = selectedorganizaciontrabajador;
     }
-   
 
-    
+    public void InsertarOrganizacionTrabajador() {
+        objOrganizacionTrabajadorDao.InsertarOrganizacionTrabajador(selectedorganizaciontrabajador);
+    }
+
+    public void ActualizarOrganizacionTrabajador() {
+        objOrganizacionTrabajadorDao.ActualizarOrganizacionTrabajador(selectedorganizaciontrabajador);
+    }
+
+    public void EliminarOrganizacionTrabajador() {
+        objOrganizacionTrabajadorDao.EliminarOrganizacionTrabajador(selectedorganizaciontrabajador);
+    }
+
 }

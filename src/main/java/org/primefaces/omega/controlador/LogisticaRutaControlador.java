@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -20,19 +19,19 @@ import org.primefaces.omega.modelo.LogisticaRuta;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaRutaControlador { 
+public class LogisticaRutaControlador {
+
     private List<LogisticaRuta> logisticaruta = null;
     private LogisticaRuta selectedlogisticaruta;
-    private LogisticaRutaDao objLogisticaRutaDao= new LogisticaRutaDaoImplements();
+    private LogisticaRutaDao objLogisticaRutaDao = new LogisticaRutaDaoImplements();
 
     public LogisticaRutaControlador() {
     }
 
-    
     public List<LogisticaRuta> getLogisticaruta() {
-        return logisticaruta;
+        return logisticaruta = objLogisticaRutaDao.LoadTablaLogisticaRutas();
     }
-    
+
     public LogisticaRuta getSelectedlogisticaruta() {
         return selectedlogisticaruta;
     }
@@ -40,7 +39,17 @@ public class LogisticaRutaControlador {
     public void setSelectedlogisticaruta(LogisticaRuta selectedlogisticaruta) {
         this.selectedlogisticaruta = selectedlogisticaruta;
     }
-    
 
-    
+    public void InsertarLogisticaRuta() {
+        objLogisticaRutaDao.InsertarLogisticaRuta(selectedlogisticaruta);
+    }
+
+    public void ActualizarLogisticaRuta() {
+        objLogisticaRutaDao.ActualizarLogisticaRuta(selectedlogisticaruta);
+    }
+
+    public void EliminarLogisticaRuta() {
+        objLogisticaRutaDao.EliminarLogisticaRuta(selectedlogisticaruta);
+    }
+
 }

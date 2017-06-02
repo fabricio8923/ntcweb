@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionRazonsocial;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionRazonsocialControlador { 
+public class OrganizacionRazonsocialControlador {
+
     private List<OrganizacionRazonsocial> organizacionrazonsocial = null;
     private OrganizacionRazonsocial selectedorganizacionrazonsocial;
-    private OrganizacionRazonsocialDao objOrganizacionRazonsocialDao= new OrganizacionRazonsocialDaoImplements();
+    private OrganizacionRazonsocialDao objOrganizacionRazonsocialDao = new OrganizacionRazonsocialDaoImplements();
 
     public OrganizacionRazonsocialControlador() {
     }
 
-    
     public List<OrganizacionRazonsocial> getOrganizacionrazonsocial() {
-        return organizacionrazonsocial;
+        return organizacionrazonsocial = objOrganizacionRazonsocialDao.LoadTablaOrganizacionRazonsociales();
     }
 
-    
     public OrganizacionRazonsocial getSelectedorganizacionrazonsocial() {
         return selectedorganizacionrazonsocial;
     }
@@ -42,6 +40,17 @@ public class OrganizacionRazonsocialControlador {
     public void setSelectedorganizacionrazonsocial(OrganizacionRazonsocial selectedorganizacionrazonsocial) {
         this.selectedorganizacionrazonsocial = selectedorganizacionrazonsocial;
     }
-   
+
+    public void InsertarOrganizacionRazonsocial() {
+        objOrganizacionRazonsocialDao.InsertarOrganizacionRazonsocial(selectedorganizacionrazonsocial);
+    }
+
+    public void ActualizarOrganizacionRazonsocial() {
+        objOrganizacionRazonsocialDao.ActualizarOrganizacionRazonsocial(selectedorganizacionrazonsocial);
+    }
+
+    public void EliminarOrganizacionRazonsocial() {
+        objOrganizacionRazonsocialDao.EliminarOrganizacionRazonsocial(selectedorganizacionrazonsocial);
+    }
 
 }

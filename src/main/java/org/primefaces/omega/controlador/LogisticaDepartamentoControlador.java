@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,15 +20,15 @@ import org.primefaces.omega.modelo.LogisticaDepartamento;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class LogisticaDepartamentoControlador { 
+public class LogisticaDepartamentoControlador {
+
     private List<LogisticaDepartamento> logisticadepartamento = null;
     private LogisticaDepartamento selectedlogisticadepartamento;
-    private LogisticaDepartamentoDao objLogisticaDepartamentoDao= new LogisticaDepartamentoDaoImplements();
+    private LogisticaDepartamentoDao objLogisticaDepartamentoDao = new LogisticaDepartamentoDaoImplements();
 
     public LogisticaDepartamentoControlador() {
     }
 
-    
     public LogisticaDepartamento getSelectedlogisticadepartamento() {
         return selectedlogisticadepartamento;
     }
@@ -39,8 +38,19 @@ public class LogisticaDepartamentoControlador {
     }
 
     public List<LogisticaDepartamento> getLogisticadepartamento() {
-        return logisticadepartamento;
+        return logisticadepartamento = objLogisticaDepartamentoDao.LoadTablaLogisticaDepartamentos();
     }
-   
-    
+
+    public void InsertarLogisticaDepartamento() {
+        objLogisticaDepartamentoDao.InsertarLogisticaDepartamento(selectedlogisticadepartamento);
+    }
+
+    public void ActualizarLogisticaDepartamento() {
+        objLogisticaDepartamentoDao.ActualizarLogisticaDepartamento(selectedlogisticadepartamento);
+    }
+
+    public void EliminarLogisticaDepartamento() {
+        objLogisticaDepartamentoDao.EliminarLogisticaDepartamento(selectedlogisticadepartamento);
+    }
+
 }

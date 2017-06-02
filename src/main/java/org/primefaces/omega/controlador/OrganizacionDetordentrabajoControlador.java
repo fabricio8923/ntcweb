@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.primefaces.omega.controlador;
 
 import org.primefaces.omega.modelo.Dao.*;
@@ -21,20 +20,19 @@ import org.primefaces.omega.modelo.OrganizacionDetordentrabajo;
  */
 @ManagedBean(name = "")
 @ViewScoped
-public class OrganizacionDetordentrabajoControlador { 
+public class OrganizacionDetordentrabajoControlador {
+
     private List<OrganizacionDetordentrabajo> organizaciondetordentrabajo = null;
     private OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo;
-    private OrganizacionDetordentrabajoDao objOrganizacionDetordentrabajoDao= new OrganizacionDetordentrabajoDaoImplements();
+    private OrganizacionDetordentrabajoDao objOrganizacionDetordentrabajoDao = new OrganizacionDetordentrabajoDaoImplements();
 
     public OrganizacionDetordentrabajoControlador() {
     }
 
-    
     public List<OrganizacionDetordentrabajo> getOrganizaciondetordentrabajo() {
-        return organizaciondetordentrabajo;
+        return organizaciondetordentrabajo = objOrganizacionDetordentrabajoDao.LoadTablaOrganizacionDetordentrabajos();
     }
 
-    
     public OrganizacionDetordentrabajo getSelectedorganizaciondetordentrabajo() {
         return selectedorganizaciondetordentrabajo;
     }
@@ -42,7 +40,17 @@ public class OrganizacionDetordentrabajoControlador {
     public void setSelectedorganizaciondetordentrabajo(OrganizacionDetordentrabajo selectedorganizaciondetordentrabajo) {
         this.selectedorganizaciondetordentrabajo = selectedorganizaciondetordentrabajo;
     }
-    
-    
-    
+
+    public void InsertarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.InsertarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
+    public void ActualizarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.ActualizarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
+    public void EliminarOrganizacionDetordentrabajo() {
+        objOrganizacionDetordentrabajoDao.EliminarOrganizacionDetordentrabajo(selectedorganizaciondetordentrabajo);
+    }
+
 }

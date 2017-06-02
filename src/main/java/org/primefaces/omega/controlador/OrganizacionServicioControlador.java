@@ -29,12 +29,10 @@ public class OrganizacionServicioControlador {
     public OrganizacionServicioControlador() {
     }
 
-    
     public List<OrganizacionServicio> getOrganizacionservicio() {
-        return organizacionservicio;
+        return organizacionservicio = objOrganizacionServicioDao.LoadTablaOrganizacionServicioes();
     }
 
-    
     public OrganizacionServicio getSelectedorganizacionservicio() {
         return selectedorganizacionservicio;
     }
@@ -43,5 +41,16 @@ public class OrganizacionServicioControlador {
         this.selectedorganizacionservicio = selectedorganizacionservicio;
     }
 
-    
+    public void InsertarOrganizacionServicio() {
+        objOrganizacionServicioDao.InsertarOrganizacionServicio(selectedorganizacionservicio);
+    }
+
+    public void ActualizarOrganizacionServicio() {
+        objOrganizacionServicioDao.ActualizarOrganizacionServicio(selectedorganizacionservicio);
+    }
+
+    public void EliminarOrganizacionServicio() {
+        objOrganizacionServicioDao.EliminarOrganizacionServicio(selectedorganizacionservicio);
+    }
+
 }
